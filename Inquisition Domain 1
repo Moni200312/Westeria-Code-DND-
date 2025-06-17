@@ -1,0 +1,18 @@
+- name: Witch Hunter's Strike (3d8)
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: damage
+          damage: 3d8[force]
+          overheal: null
+    - type: text
+      text: >-
+        You deal 3d8 force damage when you hit a creature concentrating on a spell
+        and you are at least level 14.
+
+        If the target fails their concentration saving throw, gain temporary HP equal to the force damage dealt.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: use
