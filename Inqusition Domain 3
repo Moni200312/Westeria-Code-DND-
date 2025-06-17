@@ -1,0 +1,21 @@
+- name: Witch Hunter's Strike
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: damage
+          damage: 1d8[force]
+          overheal: null
+    - type: text
+      text: >-
+        You can deal bonus force damage when you hit with a weapon attack.
+
+        Choose the appropriate damage amount: - 1d8 (normal) - 2d8 (if the target is concentrating or you're level 14) - 3d8 (if the target is concentrating AND you're level 14)
+
+        If the target fails their concentration saving throw, gain temporary HP equal to the force damage dealt.
+
+        You regain all uses when you finish a long rest.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: use
