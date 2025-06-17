@@ -1,0 +1,19 @@
+- name: Witch Hunter's Strike (2d8)
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: damage
+          damage: 2d8[force]
+          overheal: null
+    - type: text
+      text: >-
+        You deal 2d8 force damage when you hit with a weapon attack.
+
+        This applies if the target is concentrating on a spell, or if you're level 14.
+
+        If the target fails their concentration saving throw, gain temporary HP equal to the force damage dealt.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: use
