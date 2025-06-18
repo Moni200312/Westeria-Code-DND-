@@ -1,0 +1,36 @@
+_v: 2
+name: Channel Divinity: Spell Shield
+proper: true
+verb: use
+type: Class Feature
+source: Inquisition Domain
+level: 2
+uses:
+  max: 1
+  period: short
+activation: Bonus Action
+automation:
+  - type: target
+    target: each
+    effects:
+      - type: roll
+        name: spellshield_thp
+        dice: 1d10
+        mod: caster.level
+        onRoll:
+          - type: temphp
+            amount: $spellshield_thp.total
+          - type: ieffect2
+            name: Spell Shield
+            duration: "60"
+            desc: >-
+              While this effect is active, the target has resistance to damage from spells and advantage on saving throws against spells. Remaining temporary hit points vanish after 1 hour.
+  - type: text
+    text: >-
+      As a bonus action, you present your holy symbol and choose a creature you can see (including yourself) within 30 feet.
+
+      The chosen creature gains temporary hit points equal to 1d10 + your cleric level.
+
+      While a creature has temporary hit points granted by this feature, it has **resistance to spell damage** and **advantage on saving throws against spells**.
+
+      Remaining temporary hit points disappear after 1 hour.
