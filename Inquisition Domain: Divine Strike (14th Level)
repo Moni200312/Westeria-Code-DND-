@@ -1,0 +1,15 @@
+- name: Divine Strike (2d8)
+  automation:
+    - type: target
+      target: each
+      effects:
+        - type: damage
+          damage: 2d8[force]
+          overheal: null
+    - type: text
+      text: Once on each of your turns when you hit a creature with a weapon attack,
+        you can deal an additional 2d8 force damage.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: hit
