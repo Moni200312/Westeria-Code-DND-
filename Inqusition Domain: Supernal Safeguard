@@ -1,0 +1,19 @@
+- name: Supernal Safeguard
+  automation:
+    - type: target
+      target: self
+      effects:
+        - type: check
+          ability:
+            - wisdom
+    - type: text
+      text: >-
+        When you use your Channel Divinity: Spell Shield, you can now choose up to
+      2 creatures instead of just one. These creatures
+        benefit from the feature’s protective effect.
+
+        This enhancement becomes available at 17th level.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: use
