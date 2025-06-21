@@ -1,0 +1,17 @@
+name: Pack Leader
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "1"
+      - type: text
+        text: When an enemy creature within 5 feet of you is attacked, you can use your
+          reaction and spend 1 maneuver point to make a melee attack at the same
+          enemy creature. When you do, the triggering attack has advantage.
+_v: 2
+proper: false
+activation_type: 4
