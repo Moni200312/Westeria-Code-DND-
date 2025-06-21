@@ -1,0 +1,64 @@
+name: Reckless Tactics
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: condition
+        condition: caster.levels.get('Bard') > 14
+        onTrue:
+          - type: roll
+            dice: d12
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+            onTrue:
+              - type: roll
+                dice: d10
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+                onTrue:
+                  - type: roll
+                    dice: d8
+                    name: bardic
+                onFalse:
+                  - type: condition
+                    condition: caster.levels.get('Bard') < 5
+                    onTrue:
+                      - type: roll
+                        dice: d6
+                        name: bardic
+                    onFalse: []
+      - type: ieffect2
+        name: Reckless Tactics
+        end: true
+        duration: "1"
+        effects:
+          attack_advantage: "1"
+          damage_bonus: "{{(bardic + wisdomMod)}}"
+        save_as: recktactics
+      - type: counter
+        counter:
+          id: 1011
+          typeId: 222216831
+        amount: "1"
+      - type: text
+        text: >-
+          When you make an attack with a melee weapon that has either the heavy,
+          two-handed, or versatile quality, you can expend one use of your
+          Bardic Inspiration to gain advantage on the attack. Add the number you
+          roll on your Bardic Inspiration die + your Wisdom modifier to the
+          attack’s damage roll. Attacks made against you this round have
+          advantage.
+
+
+          At 6th level you have learned, through practice, how to push your offense even further. You may impose a -5 penalty to this attack roll. If the attack hits, you add +10 to the attack’s damage.
+
+
+          At 14th level, your experience has taught you how to really go all in. If you have not moved this turn, you may voluntarily reduce your speed to 0 until your next turn to resolve this attack against any number of creatures within 5 feet of you, making a separate attack roll for each target.
+_v: 2
+verb: uses their
+proper: true
+activation_type: 3
