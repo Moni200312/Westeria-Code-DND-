@@ -1,0 +1,88 @@
+name: Form of the Beast
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: temphp
+        amount: "{min(20, WarlockLevel*2)}"
+      - type: ieffect2
+        name: Form of the Beast
+        duration: "100"
+        attacks:
+          - attack:
+              _v: 2
+              name: Bite
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: attack
+                      hit:
+                        - type: damage
+                          damage: 1d6+{charismaMod}[piercing]
+                      miss: []
+                      attackBonus: proficiencyBonus+charismaMod
+                - type: text
+                  text: You sprout a set of pointed teeth and razor-sharp claws, which are natural
+                    weapons you can use to make unarmed strikes against
+                    creatures within 5 feet of you. You have proficiency with
+                    these weapons and can use your Charisma modifier for the
+                    attack and damage rolls made using these natural weapons. On
+                    a hit, your bite deals 1d6 piercing damage, and your claws
+                    deal 1d4 slashing damage.
+              verb: attacks with their
+              proper: true
+          - attack:
+              _v: 2
+              name: Claws
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: attack
+                      hit:
+                        - type: damage
+                          damage: 1d4+{charismaMod}[slashing]
+                      miss: []
+                      attackBonus: charismaMod+proficiencyBonus
+                - type: text
+                  text: >-
+                    You sprout a set of pointed teeth and razor-sharp claws, which are natural
+                    weapons you can use to make unarmed strikes against
+                    creatures within 5 feet of you. You have proficiency with
+                    these weapons and can use your Charisma modifier for the
+                    attack and damage rolls made using these natural weapons. On
+                    a hit, your bite deals 1d6 piercing damage, and your claws
+                    deal 1d4 slashing damage.
+
+
+                    As a bonus action, after making a bite attack, you can make a claw attack.
+              verb: attacks with their
+              proper: true
+        effects:
+          check_adv:
+            - stealth
+            - perception
+            - survival
+        desc: >-
+          * Your senses become supernaturally keen. You have advantage on Dexterity
+          (Stealth), Wisdom (Perception), and Wisdom (Survival) checks you make
+          to track or stalk your prey.
+
+          * You sprout a set of pointed teeth and razor-sharp claws, which are natural weapons you can use to make unarmed strikes against creatures within 5 feet of you. You have proficiency with these weapons and can use your Charisma modifier for the attack and damage rolls made using these natural weapons.
+  - type: text
+    text: >-
+      You are flooded with adrenaline, feeling nothing besides the thrill of the
+      hunt. 
+
+      * You gain temporary hit points equal to two times your warlock level, up to a maximum of 20 temporary hit points at 10th level. These temporary hit points last until the end of your transformation.
+
+      * Your senses become supernaturally keen. You have advantage on Dexterity (Stealth), Wisdom (Perception), and Wisdom (Survival) checks you make to track or stalk your prey.
+
+      * You sprout a set of pointed teeth and razor-sharp claws, which are natural weapons you can use to make unarmed strikes against creatures within 5 feet of you. You have proficiency with these weapons and can use your Charisma modifier for the attack and damage rolls made using these natural weapons. On a hit, your bite deals 1d6 piercing damage, and your claws deal 1d4 slashing damage. If you already had a bite or claw attack (talon attacks count as claw attacks), its damage increases by one step (a d4 becomes a d6, a d6 becomes a d8, etc.). As a bonus action, after making a bite attack, you can make a claw attack.
+  - type: counter
+    counter: Form of the Beast
+    amount: "1"
+_v: 2
+proper: true
+verb: taps into the
