@@ -1,0 +1,31 @@
+name: Ferocious Rage
+automation:
+  - type: condition
+    condition: level > 10 or level == 10
+    onTrue:
+      - type: target
+        target: all
+        effects:
+          - type: save
+            stat: wis
+            fail:
+              - type: ieffect2
+                name: Frightened
+                duration: "2"
+                end: true
+                effects:
+                  attack_advantage: "-1"
+            success: []
+            dc: "{{8+constitutionMod+proficiencyBonus}}"
+          - type: text
+            text: When you enter your rage, creatures of your choice within 10 ft. that can
+              see you must succeed on a Wis. saving throw. If it fails, the
+              creature is frightened of you until the end of its next turn.
+    onFalse:
+      - type: text
+        text: Your level is not high enough.
+    errorBehaviour: "false"
+_v: 2
+proper: false
+verb: frightens with
+activation_type: 3
