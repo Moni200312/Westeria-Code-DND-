@@ -1,0 +1,25 @@
+name: Carrion Feast
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: 5d6[necrotic]
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "4"
+      - type: text
+        text: You can use an action and spend 4 maneuver points to feast on an enemy's
+          waning life. When you use this maneuver, make a melee weapon attack.
+          On a hit, the attack deals an additional 5d6 necrotic damage and you
+          gain temporary hit points equal to the necrotic damage dealt.
+  - type: target
+    target: self
+    effects:
+      - type: temphp
+        amount: "{{lastDamage}}"
+_v: 2
+proper: false
+verb: calls for
