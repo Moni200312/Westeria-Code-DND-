@@ -1,0 +1,110 @@
+name: Hunting Lessons
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: condition
+        condition: caster.levels.get('Bard') > 14
+        onTrue:
+          - type: roll
+            dice: d12
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+            onTrue:
+              - type: roll
+                dice: d10
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+                onTrue:
+                  - type: roll
+                    dice: d8
+                    name: bardic
+                onFalse:
+                  - type: condition
+                    condition: caster.levels.get('Bard') < 5
+                    onTrue:
+                      - type: roll
+                        dice: d6
+                        name: bardic
+                    onFalse: []
+      - type: ieffect2
+        name: Hunting Lessons
+        duration: "600"
+        save_as: hunting
+        attacks:
+          - attack:
+              _v: 2
+              name: Name Quarry
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: ieffect2
+                      name: "{{caster.name}}'s Quarry"
+                      duration: "600"
+                      parent: hunting
+              verb: points at creature to
+              activation_type: 8
+          - attack:
+              _v: 2
+              name: Hunter's Lesson
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: condition
+                      condition: caster.levels.get('Bard') > 14
+                      onTrue:
+                        - type: roll
+                          dice: d12
+                          name: bardic
+                      onFalse:
+                        - type: condition
+                          condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+                          onTrue:
+                            - type: roll
+                              dice: d10
+                              name: bardic
+                          onFalse:
+                            - type: condition
+                              condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+                              onTrue:
+                                - type: roll
+                                  dice: d8
+                                  name: bardic
+                              onFalse:
+                                - type: condition
+                                  condition: caster.levels.get('Bard') < 5
+                                  onTrue:
+                                    - type: roll
+                                      dice: d6
+                                      name: bardic
+                                  onFalse: []
+                    - type: damage
+                      damage: "{{bardic}}"
+        conc: true
+      - type: text
+        text: >-
+          You can expend one use of your Bardic Inspiration to target one creature
+          you can see within 90 feet of you as your quarry. For as long as you
+          concentrate on this ability, up to 1 hour, all weapon attacks you make
+          against the target deal additional damage equal to your Bardic
+          Inspiration die.
+
+
+          At 6th level, you have honed your skills to the point where you can easily track your quarry. For the duration of the effect, you are aware of your target’s approximate distance and direction from you, so long as you are on the same plane.
+
+
+          At 14th level, you can maintain this effect for up to 24 hours.
+      - type: counter
+        counter:
+          id: 1011
+          typeId: 222216831
+        amount: "1"
+_v: 2
+proper: true
+activation_type: 2
