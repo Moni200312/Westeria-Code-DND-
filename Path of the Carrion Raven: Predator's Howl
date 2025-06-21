@@ -1,0 +1,41 @@
+name: Predator's Howl
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: wis
+        fail:
+          - type: ieffect2
+            name: Frightened
+            duration: "2"
+            tick_on_caster: true
+            effects:
+              attack_advantage: "-1"
+            buttons:
+              - label: Takes Damage
+                automation:
+                  - type: target
+                    target: self
+                    effects:
+                      - type: damage
+                        damage: 1d6[psychic]
+                style: "1"
+        success: []
+        dc: "{{8+constitutionMod+proficiencyBonus}}"
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "2"
+      - type: text
+        text: You can use a bonus action and spend 2 maneuver points to emit a
+          terrifying howl. Two creatures of your choice within 30 feet of you
+          must make a Wisdom saving throw. On a failed save, the creature is
+          frightened until the start of your next turn. Each time the frightened
+          creature takes damage from weapon attacks, they take an additional 1d6
+          psychic damage.
+_v: 2
+proper: false
+verb: frightens foes with
+activation_type: 3
