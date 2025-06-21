@@ -1,0 +1,58 @@
+name: Blade Breaking Blow
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: condition
+        condition: target.stengthMod > target.dexterityMod
+        onTrue:
+          - type: save
+            stat: str
+            fail:
+              - type: ieffect2
+                name: Broken Weapon
+                desc: "{{target.name}}'s weapon only deals half damage."
+            success: []
+            dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+          - type: text
+            text: When you hit a creature with an attack, if it is wielding a weapon, you
+              can spend 4 maneuver points and deal no damage with that attack.
+              Instead, the target must make a Strength saving throw. On a failed
+              save, one of their weapons is damaged. A damaged weapon deals half
+              as much damage. If this maneuver is used on a damaged weapon, that
+              weapon is destroyed or otherwise rendered unusable. This maneuver
+              has no effect on natural or magical weapons.
+        onFalse:
+          - type: save
+            stat: dex
+            fail:
+              - type: ieffect2
+                name: Broken Weapon
+                desc: "{{target.name}}'s weapon only deals half damage."
+            success: []
+            dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+          - type: text
+            text: When you hit a creature with an attack, if it is wielding a weapon, you
+              can spend 4 maneuver points and deal no damage with that attack.
+              Instead, the target must make a Dexterity saving throw. On a
+              failed save, one of their weapons is damaged. A damaged weapon
+              deals half as much damage. If this maneuver is used on a damaged
+              weapon, that weapon is destroyed or otherwise rendered unusable.
+              This maneuver has no effect on natural or magical weapons.
+        errorBehaviour: "true"
+      - type: text
+        text: When you hit a creature with an attack, if it is wielding a weapon, you
+          can spend 4 maneuver points and deal no damage with that attack.
+          Instead, the target must make a Strength or Dexterity saving throw. On
+          a failed save, one of their weapons is damaged. A damaged weapon deals
+          half as much damage. If this maneuver is used on a damaged weapon,
+          that weapon is destroyed or otherwise rendered unusable. This maneuver
+          has no effect on natural or magical weapons.
+        title: Blade Breaking Blow (4 points)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "4"
+_v: 2
+activation_type: 1
