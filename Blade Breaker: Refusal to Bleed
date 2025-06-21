@@ -1,0 +1,25 @@
+_v: 2
+name: Refusal to Bleed
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: damage
+        damage: "- (1d10 + {{caster.levels.get('Fighter')}})) [refused]"
+      - type: text
+        text: >-
+          As a reaction when you take damage, you can spend 1 maneuver point to roll
+          a d10. Add your fighter level to the number rolled and reduce the
+          damage by that total.
+
+
+          If the triggering damage is from an attack, you can spend 3 additional maneuver points to reduce all damage from the creature that attacked you by the same total until the start of your next turn.
+        title: Refusal to Bleed (1 point)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "1"
+verb: uses
+proper: false
+activation_type: 4
