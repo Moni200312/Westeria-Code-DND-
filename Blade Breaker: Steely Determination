@@ -1,0 +1,19 @@
+name: Steely Determination
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: damage
+        damage: -{{caster.levels.get('Fighter')}}
+      - type: text
+        text: When you use your Second Wind, you can spend 1 maneuver point and regain
+          an additional number of hit points equal to your fighter level.
+        title: Steely Determination (1 point)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "1"
+_v: 2
+proper: false
+activation_type: 3
