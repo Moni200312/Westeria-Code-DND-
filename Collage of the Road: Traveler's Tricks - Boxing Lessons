@@ -1,0 +1,100 @@
+name: Boxing Lessons
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 14
+    onTrue:
+      - type: roll
+        dice: d12
+        name: bardic
+    onFalse:
+      - type: condition
+        condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+        onTrue:
+          - type: roll
+            dice: d10
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+            onTrue:
+              - type: roll
+                dice: d8
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 5
+                onTrue:
+                  - type: roll
+                    dice: d6
+                    name: bardic
+                onFalse: []
+  - type: target
+    target: all
+    effects:
+      - type: attack
+        hit:
+          - type: damage
+            damage: "{{bardic + (strengthMod or dexterityMod)}} [bludgeoning]"
+        miss: []
+        attackBonus: "{{(strengthMod or dexterityMod) + proficiencyBonus}}"
+      - type: text
+        text: >-
+          When you take the attack action, you can expend one use of your Bardic
+          Inspiration to quickly execute two unarmed strikes against one or more
+          creatures you could target. You may use Dexterity instead of Strength
+          for the attack and damage rolls of these unarmed strikes. The damage
+          die used for these unarmed strikes is the same as your Bardic
+          Inspiration die.
+
+
+          At 6th level, you have finally mastered the “weave” portion of your technique. You do not provoke attacks of opportunity this turn.
+
+
+          At 14th level, your practice has paid off, granting you the use of a slightly ki-infused attack. When you hit with one of these attacks you may attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.
+  - type: condition
+    condition: caster.levels.get('Bard') > 13
+    onTrue:
+      - type: target
+        target: self
+        effects:
+          - type: ieffect2
+            name: Stunning Strike
+            duration: "1"
+            end: true
+            attacks:
+              - attack:
+                  _v: 2
+                  name: Stunning Strike
+                  automation:
+                    - type: target
+                      target: all
+                      effects:
+                        - type: save
+                          stat: con
+                          fail:
+                            - type: ieffect2
+                              name: Stunned
+                              duration: "2"
+                              tick_on_caster: false
+                              end: true
+                          success: []
+                          dc: 8+wisdomMod+proficiencyBonus
+                defaultDC: (8+wisdomMod+proficiencyBonus) or 10
+                defaultAttackBonus: wisdomMod+proficiencyBonus
+                defaultCastingMod: wisdomMod
+          - type: text
+            text: At 14th level, your practice has paid off, granting you the use of a
+              slightly ki-infused attack. When you hit with one of these attacks
+              you may attempt a stunning strike. The target must succeed on a
+              Constitution saving throw or be stunned until the end of your next
+              turn.
+    onFalse: []
+  - type: counter
+    counter:
+      id: 1011
+      typeId: 222216831
+    amount: "1"
+_v: 2
+proper: true
+verb: uses their
+activation_type: 2
