@@ -1,0 +1,71 @@
+name: Shape of the Behemoth
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Shape of the Behemoth
+        duration: "10"
+        effects:
+          damage_bonus: 1d6[weapon]
+        attacks: []
+        buttons:
+          - label: Behemoth THP
+            automation:
+              - type: target
+                target: self
+                effects:
+                  - type: temphp
+                    amount: 1d6
+            verb: null
+            style: "3"
+            defaultDC: null
+            defaultAttackBonus: null
+            defaultCastingMod: null
+        end: false
+        conc: true
+        desc: >-
+          - {{caster.name}}'s size increases by one category to a maximum of Large.
+
+          - Their reach increases by 5 ft.
+
+          - Their attacks deal additional 1d6 damage.
+
+          - They gain 1d6 temporary hit points at the start of their turn.
+
+          These effects end early if they lose concentration.
+        stacking: false
+        save_as: null
+        parent: null
+        target_self: false
+        tick_on_caster: false
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "3"
+        allowOverflow: false
+        errorBehaviour: warn
+      - type: text
+        text: >-
+          As an action you can spend 3 maneuver points to embody the power of
+          nature’s largest beasts for 1 minute. You gain the following benefits
+          while concentrating on this maneuver:
+
+
+          • Your size increases by one category to a maximum size of Large.
+
+
+          • Your reach increases by 5 ft.
+
+
+          • Your weapon attacks deal an additional 1d6 damage.
+
+
+          • You gain 1d6 temporary HP at the start of each of your turns.
+
+
+          This maneuver ends early if you lose concentration.
+        title: Effect
+_v: 2
+activation_type: 1
