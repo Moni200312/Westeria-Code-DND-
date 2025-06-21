@@ -1,0 +1,128 @@
+_v: 2
+name: Armed Combat Lessons
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 15 or caster.levels.get('Bard') == 15
+    onTrue:
+      - type: roll
+        dice: d12
+        name: bardic
+    onFalse:
+      - type: condition
+        condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 10 or
+          caster.levels.get('Bard') == 10
+        onTrue:
+          - type: roll
+            dice: d10
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 5 or
+              caster.levels.get('Bard') == 5
+            onTrue:
+              - type: roll
+                dice: d8
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 5
+                onTrue:
+                  - type: roll
+                    dice: d6
+                    name: bardic
+                onFalse: []
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Armed Combat Lessons
+        duration: "100"
+        buttons:
+          - automation:
+              - type: target
+                target: self
+                effects:
+                  - type: ieffect2
+                    name: "Armed Combat Lessons: Archery"
+                    duration: "100"
+                    effects:
+                      to_hit_bonus: "2"
+                    desc: "{{caster.name}} has bonus +2 to attack rolls made with ranged weapons."
+                    parent: combatlessons
+            label: Archery
+            style: "1"
+          - automation:
+              - type: target
+                target: self
+                effects:
+                  - type: ieffect2
+                    name: "Armed Combat Lessons: Dueling"
+                    duration: "100"
+                    effects:
+                      damage_bonus: "2"
+                    desc: "{{caster.name}} has bonus +2 to damage rolls made with melee one-handed
+                      weapons, while not holding any in other hand."
+                    parent: combatlessons
+            label: Dueling
+            style: "1"
+          - automation:
+              - type: target
+                target: self
+                effects:
+                  - type: ieffect2
+                    name: Armed Combat Lessons
+                    duration: "100"
+                    desc: >-
+                      {{caster.name}} When you roll a 1 or 2 on a damage die for an attack you
+                      make with a melee weapon that you are wielding with two
+                      hands, you can reroll the die and must use the new roll,
+                      even if the new roll is a 1 or a 2.
+
+                      - Must be two-handed or versatile weapon.
+                    parent: combatlessons
+            label: Great Weapon Fighting
+            style: "1"
+          - automation:
+              - type: target
+                target: self
+                effects:
+                  - type: ieffect2
+                    name: "Armed Combat Lessons: Two-Weapon Fighting"
+                    duration: "100"
+                    desc: "{{caster.name}} can add their ability modifier to the damage roll of the
+                      off-hand weapon."
+                    parent: combatlessons
+            label: Two-Weapon Fighting
+            style: "1"
+        save_as: combatlessons
+      - type: text
+        text: >-
+          When you make a weapon attack, you can expend one use of your Bardic
+          Inspiration, adding your Bardic Inspiration die to the attack or
+          damage roll. When you do this, you gain the benefits of your chosen
+          Fighting Style for 10 minutes.
+
+
+          At 6th level, you learn how to use your stance to chain your attacks together in a deadly combination. Once, while your Fighting Style is active, you may attack twice, instead of once, when taking the Attack action on your turn.
+
+
+          At 14th level you have learned to shore up any weaknesses in your stance. You gain +1 to your AC for the effect’s duration.
+      - type: condition
+        condition: caster.levels.get('Bard') > 13
+        onTrue:
+          - type: ieffect2
+            name: Improved Combat Lessons
+            effects:
+              ac_bonus: "1"
+            parent: combatlessons
+            duration: "100"
+        onFalse: []
+  - type: counter
+    counter:
+      id: 1011
+      typeId: 222216831
+    amount: "1"
+verb: uses their
+proper: true
+activation_type: 3
+
