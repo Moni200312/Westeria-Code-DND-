@@ -1,0 +1,21 @@
+name: Tusks of the Rampaging Mammoth
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: 3d12[weapon]
+      - type: text
+        text: You can use an action and spend 3 maneuver points to strike an enemy with
+          the overwhelming force of a rampaging mammoth. When you do, make a
+          melee weapon attack against a creature within 5 feet. On a hit, you
+          deal 3d12 damage in addition to your attack’s normal damage. If the
+          creature is Huge or smaller, you push the creature 15 feet.
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "3"
+_v: 2
+proper: true
+activation_type: 1
