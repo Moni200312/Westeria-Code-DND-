@@ -1,0 +1,134 @@
+name: Warding Trick
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Warding Trick
+        duration: "100"
+        conc: true
+        attacks:
+          - attack:
+              _v: 2
+              name: Ward a Creature
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: condition
+                      condition: caster.levels.get('Bard') > 14
+                      onTrue:
+                        - type: roll
+                          dice: d12
+                          name: bardic
+                      onFalse:
+                        - type: condition
+                          condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+                          onTrue:
+                            - type: roll
+                              dice: d10
+                              name: bardic
+                          onFalse:
+                            - type: condition
+                              condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+                              onTrue:
+                                - type: roll
+                                  dice: d8
+                                  name: bardic
+                              onFalse:
+                                - type: condition
+                                  condition: caster.levels.get('Bard') < 5
+                                  onTrue:
+                                    - type: roll
+                                      dice: d6
+                                      name: bardic
+                                  onFalse: []
+                    - type: roll
+                      dice: "{{bardic + wisdomMod}}"
+                      name: tehp
+                      displayName: Temporary HP
+                    - type: condition
+                      condition: tehp > target.temp_hp
+                      onTrue:
+                        - type: temphp
+                          amount: "{{tehp}}"
+                      onFalse: []
+              verb: "goes to "
+              activation_type: 8
+        save_as: warding
+  - type: condition
+    condition: caster.levels.get('Bard') > 5
+    onTrue:
+      - type: target
+        target: all
+        effects:
+          - type: ieffect2
+            name: Radiant Payback
+            duration: "100"
+            parent: warding
+            attacks:
+              - attack:
+                  _v: 2
+                  name: Radiant Rebuke
+                  automation:
+                    - type: condition
+                      condition: caster.levels.get('Bard') > 14
+                      onTrue:
+                        - type: roll
+                          dice: d12
+                          name: bardic
+                      onFalse:
+                        - type: condition
+                          condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+                          onTrue:
+                            - type: roll
+                              dice: d10
+                              name: bardic
+                          onFalse:
+                            - type: condition
+                              condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+                              onTrue:
+                                - type: roll
+                                  dice: d8
+                                  name: bardic
+                              onFalse:
+                                - type: condition
+                                  condition: ""
+                                  onTrue:
+                                    - type: roll
+                                      dice: d6
+                                      name: bardic
+                                  onFalse: []
+                    - type: target
+                      target: all
+                      effects:
+                        - type: save
+                          stat: wis
+                          fail:
+                            - type: damage
+                              damage: "{{bardic}} [radiant]"
+                          success: []
+                defaultDC: (8 + proficiencyBonus + wisdomMod) or 10
+      - type: text
+        text: At 6th level, your practice allows you to weave wards that retaliate
+          against those who would harm your allies. Any creature who deals
+          damage to an ally with temporary hit points granted by this effect
+          must make a Wisdom saving throw. On a failure, the creature dealing
+          damage takes an amount of radiant damage equal to your Bardic
+          Inspiration die
+    onFalse: []
+  - type: text
+    text: You can expend one use of your Bardic Inspiration as an action to grant an
+      ally you can see within 60 feet of you a number of temporary hit points
+      equal to your roll on the Bardic Inspiration die + your Wisdom modifier
+      (minimum of 1). This ward lasts for as long as you maintain concentration
+      on it, up to 10 minutes.
+  - type: counter
+    counter:
+      id: 1011
+      typeId: 222216831
+    amount: "1"
+_v: 2
+proper: false
+verb: uses
+activation_type: 1
