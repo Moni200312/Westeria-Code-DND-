@@ -1,0 +1,29 @@
+name: Adrenaline Rush
+automation:
+  - type: condition
+    condition: level > 15 or level == 15
+    onTrue:
+      - type: target
+        target: self
+        effects:
+          - type: damage
+            damage: "- 1d10 - {{caster.levels.get('Fighter')}}"
+            overheal: false
+          - type: counter
+            counter:
+              id: 9998201
+              typeId: 12168134
+            amount: -(caster.levels.get('Fighter')/2)
+            allowOverflow: true
+      - type: text
+        text: At 15th level, the thrill of battle resonates magically within your body.
+          When you use your Second Wind, you also regain
+          {{caster.levels.get('Fighter')/2}} maneuver points.
+    onFalse:
+      - type: text
+        text: You're not high enough level for this.
+    errorBehaviour: "false"
+_v: 2
+proper: false
+verb: envigorates with
+activation_type: 3
