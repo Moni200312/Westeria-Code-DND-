@@ -1,0 +1,63 @@
+name: Armor-Crushing Blows
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: "0"
+      - type: condition
+        condition: target.dexterityMod > target.constitutionMod
+        onTrue:
+          - type: save
+            stat: dex
+            fail:
+              - type: ieffect2
+                name: Broken Armor
+                effects:
+                  ac_bonus: "-2"
+            success: []
+            dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+          - type: text
+            text: When you hit a creature with an attack, if it is wearing armor, you can
+              spend 4 maneuver points and deal no damage with that attack.
+              Instead, the target must make a Dexterity saving throw. On a
+              failed save, their armor is damaged. A creature with damage armor
+              has its AC reduced by 2. If this maneuver is used on damaged
+              armor, that armor is destroyed or otherwise rendered unusable.
+              This maneuver has no effect on natural or magical armor.
+        onFalse:
+          - type: save
+            stat: con
+            fail:
+              - type: ieffect2
+                name: Broken Armor
+                effects:
+                  ac_bonus: "-2"
+            success: []
+            dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+          - type: text
+            text: When you hit a creature with an attack, if it is wearing armor, you can
+              spend 4 maneuver points and deal no damage with that attack.
+              Instead, the target must make a Constitution saving throw. On a
+              failed save, their armor is damaged. A creature with damage armor
+              has its AC reduced by 2. If this maneuver is used on damaged
+              armor, that armor is destroyed or otherwise rendered unusable.
+              This maneuver has no effect on natural or magical armor.
+        errorBehaviour: "true"
+      - type: text
+        text: When you hit a creature with an attack, if it is wearing armor, you can
+          spend 4 maneuver points and deal no damage with that attack. Instead,
+          the target must make a Dexterity or Constitution saving throw. On a
+          failed save, their armor is damaged. A creature with damage armor has
+          its AC reduced by 2. If this maneuver is used on damaged armor, that
+          armor is destroyed or otherwise rendered unusable. This maneuver has
+          no effect on natural or magical armor.
+        title: Armor-Crushing Blows
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "4"
+_v: 2
+proper: true
+activation_type: 1
