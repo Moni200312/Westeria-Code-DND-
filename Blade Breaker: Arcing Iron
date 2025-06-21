@@ -1,0 +1,20 @@
+name: Arcing Iron
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "1"
+      - type: text
+        text: You swing your weapon in a wide arc, catching additional foes. As a bonus
+          action, you can spend 1 or more maneuver points to empower your next
+          melee attack this turn. When you make that attack, make an additional
+          attack against each additional creature within your reach, spending 1
+          maneuver point per additional creature targeted.
+        title: Arcing Iron (1 or more points)
+_v: 2
+proper: false
+activation_type: 3
