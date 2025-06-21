@@ -1,0 +1,20 @@
+name: Stoic Oxen Spirit
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "2"
+      - type: text
+        text: When you become charmed or frightened, you can use your reaction and spend
+          2 maneuver points to immediately end the triggering charmed or
+          frightened condition. In addition, you have advantage on attack rolls
+          against the creature who attempted to charm or frighten you until the
+          end of your next turn.
+_v: 2
+proper: false
+verb: "attunes themselves with "
+activation_type: 4
