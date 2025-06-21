@@ -1,0 +1,42 @@
+
+name: Slippery Otter
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Slippery Otter
+        duration: "600"
+        desc: >-
+          {{caster.name}} has embodied a spirit of otter in water, they gain the
+          following benefits for the following hour.
+
+          - They gain swimming speed of 30 feet.
+
+          - They can hold their breath for {{(constitution*2)}} minutes.
+
+          - While they are in water they can use the Dash action as a bonus action.
+        attacks:
+          - attack:
+              _v: 2
+              name: Watery Dash
+              automation:
+                - type: text
+                  text: "{{caster.name}} dashes in water!!"
+              verb: locks in and speeds up with
+              activation_type: 3
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "1"
+      - type: text
+        text: You can use a bonus action and spend 1 maneuver point to embody the grace
+          and endurance of an otter in water. For the next hour, you have a
+          swimming speed of 30 feet and can hold your breath for a number of
+          minutes equal to twice your Constitution ability score. While in the
+          water, you can take the Dash action as a bonus action.
+_v: 2
+proper: false
+verb: becomes
+activation_type: 3
