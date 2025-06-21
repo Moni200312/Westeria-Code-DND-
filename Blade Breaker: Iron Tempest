@@ -1,0 +1,30 @@
+name: Iron Tempest
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Iron Tempest
+        duration: "1"
+        end: true
+        effects:
+          damage_bonus: 2d6[weapon]
+        desc: Until end of your turn, you deal additional 2d6 additional damage and you
+          can make {{caster.proficiencyBonus}} additional attacks, but each must
+          be against a different target.
+      - type: text
+        text: As an action, you can spend 4 maneuver points and make a weapon attack
+          against a creature. Until the end of your turn, whenever you hit with
+          a weapon attack, it deals 2d6 additional damage and you can make an
+          additional number of attacks equal to your proficiency bonus, but each
+          bonus attack must be against a different target.
+        title: Iron Tempest (4 points)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "4"
+_v: 2
+proper: true
+verb: invokes an
+activation_type: 1
