@@ -1,0 +1,29 @@
+name: Helmsplitter
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: con
+        fail:
+          - type: ieffect2
+            name: Stunned
+            duration: "2"
+            end: true
+            desc: "{{target.name}} is stunned until end of its next turn."
+        success: []
+        dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+      - type: text
+        text: When you hit a creature with an attack, you can spend 4 maneuver points
+          and that creature must succeed on a Constitution saving throw or
+          become stunned until the end of its next turn. If you had advantage on
+          the attack, the target has disadvantage on the saving throw.
+        title: Helmsplitter (4 points)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "4"
+_v: 2
+proper: false
+activation_type: 8
