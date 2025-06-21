@@ -1,0 +1,30 @@
+name: Commanding Grasp
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: str
+        fail:
+          - type: text
+            text: "{{target.name}} gets teleported to {{caster.name}} and is grappled."
+          - type: ieffect2
+            name: Grappled
+        success: []
+        dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+      - type: text
+        text: As an action, you can spend 2 maneuver points and attempt to grab a
+          creature at a distance. Choose a creature of your size or smaller
+          within 30 feet that you can see. The target must succeed on a Strength
+          saving throw or be teleported to an unoccupied space next to you and
+          become grappled by you.
+        title: Commanding Grasp (2 points)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "2"
+_v: 2
+proper: false
+verb: uses
+activation_type: 1
