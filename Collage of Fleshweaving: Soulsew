@@ -1,0 +1,67 @@
+name: Soulsew
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 14 or caster.levels.get('Bard') == 14
+    onTrue:
+      - type: target
+        target: all
+        effects:
+          - type: ieffect2
+            name: Soulsewn
+            parent: soulsew
+            desc: "{{target.name}} is soulsewn to {{caster.name}} for 1 minute."
+            duration: "10"
+      - type: target
+        target: self
+        effects:
+          - type: ieffect2
+            name: Soulsew
+            save_as: soulsew
+            attacks:
+              - attack:
+                  _v: 2
+                  name: Switch Places
+                  automation:
+                    - type: target
+                      target: all
+                      effects:
+                        - type: check
+                          ability: charisma
+                          contestAbility: charisma
+                          contestTie: success
+                          success:
+                            - type: text
+                              text: "{{caster.name}} and {{target.name}} stay as they were."
+                          fail:
+                            - type: text
+                              text: "{{caster.name}} and {{target.name}} switch places!"
+                  verb: attempts to
+                  activation_type: 8
+            duration: "10"
+      - type: text
+        text: >-
+          When a creature uses one of your Bardic Inspiration dice, or fails a
+          saving throw against your Suturer feature’s Unspool or Acupuncture
+          effects, it becomes ‘soulsewn’ to you for 1 minute. While soulsewn, an
+          ethereal thread connects you to this creature via a straight line that
+          only you and creatures with truesight can see. This thread breaks if
+          the creature is ever more than 100 feet away from you.
+
+
+          Spool. You can use a bonus action to teleport to the nearest unoccupied space of a soulsewn creature of your choice, or attempt to switch places with a soulsewn creature. If the creature is unwilling to switch places, you must succeed on a contested Charisma check against the creature. On a success, or if the creature is willing, you and the target teleport, switching places with one another. If there is not enough space for either of you to switch places, you automatically lose the contest.
+
+
+          You can teleport using this feature a number of times equal to your Charisma modifier (minimum 1), and you regain all expended uses when you finish a long rest.
+        title: Soulsew
+      - type: counter
+        counter:
+          id: 11284716
+          typeId: 12168134
+        amount: "1"
+    onFalse:
+      - type: text
+        text: You're not high enough level of Bard.
+_v: 2
+proper: false
+verb: fleshweaves
+activation_type: 8
