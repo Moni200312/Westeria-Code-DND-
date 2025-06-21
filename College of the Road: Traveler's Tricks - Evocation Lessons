@@ -1,0 +1,45 @@
+name: Evocation Lessons
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 14
+    onTrue:
+      - type: roll
+        dice: d12
+        name: bardic
+    onFalse:
+      - type: condition
+        condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+        onTrue:
+          - type: roll
+            dice: d10
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+            onTrue:
+              - type: roll
+                dice: d8
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 5
+                onTrue:
+                  - type: roll
+                    dice: d6
+                    name: bardic
+                onFalse: []
+  - type: roll
+    dice: "{{bardic + wisdomMod}}"
+    name: dmgbonus
+    displayName: Damage Bonus
+  - type: text
+    text: "{{caster.name}} gains bonus of {{dmgbonus}} to their damage spell."
+  - type: counter
+    counter:
+      id: 1011
+      typeId: 222216831
+    amount: "1"
+_v: 2
+proper: true
+verb: uses their
+activation_type: 2
