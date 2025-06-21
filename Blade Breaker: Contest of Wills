@@ -1,0 +1,40 @@
+name: Contest of Wills
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: check
+        ability: intimidation
+        contestAbility: intimidation
+        contestTie: neither
+        success:
+          - type: ieffect2
+            name: Stronger Will
+            desc: "{{target.name}} has advantage on attack rolls against {{caster.name}}
+              until end of {{target.name}}'s next turn."
+            duration: "2"
+            end: true
+        fail:
+          - type: ieffect2
+            name: Stronger Will
+            duration: "2"
+            tick_on_caster: false
+            end: true
+            desc: "{{caster.name}} has advantage on attack rolls against {{target.name}}
+              until end of {{caster.name}}'s next turn."
+      - type: text
+        text: As a bonus action, you can spend 1 maneuver point to face down a creature
+          you can see that can see you in a contest of wills. Make a Charisma
+          (Intimidation) check contested by the target’s Charisma
+          (Intimidation). The creature that succeeds has advantage on attack
+          rolls against the other creature until the end of its next turn.
+        title: Contest of Wills (1 point)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "1"
+_v: 2
+proper: false
+verb: challenges someone to
+activation_type: 3
