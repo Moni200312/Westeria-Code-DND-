@@ -1,0 +1,27 @@
+name: Unyielding Determination
+automation:
+  - type: condition
+    condition: level > 7 or level == 7
+    onTrue:
+      - type: target
+        target: self
+        effects:
+          - type: ieffect2
+            name: Unyielding Determination
+            effects:
+              save_adv:
+                - all
+            desc: "{{caster.name}} has advantage on saving throws made during their turn."
+            duration: "1"
+            end: true
+          - type: text
+            text: When you reach 7th level, your unshakable will allows you to persevere
+              through any hardship. You have advantage on saving throws made
+              during your turn.
+    onFalse:
+      - type: text
+        text: You're not high enough level.
+    errorBehaviour: "false"
+_v: 2
+proper: false
+verb: shows
