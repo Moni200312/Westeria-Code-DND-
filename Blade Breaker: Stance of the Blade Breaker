@@ -1,0 +1,307 @@
+_v: 2
+name: Stance of the Blade Breaker
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Stance of the Blade Breaker
+        attacks:
+          - attack:
+              _v: 2
+              name: "Stance: Adamantine Bull"
+              automation:
+                - type: condition
+                  condition: level > 18 or level == 18
+                  onTrue:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: ieffect2
+                          name: "Stance: Adamantine Bull"
+                          attacks:
+                            - attack:
+                                _v: 2
+                                name: "Adamantine Bull: Shove"
+                                automation:
+                                  - type: target
+                                    target: all
+                                    effects:
+                                      - type: save
+                                        stat: str
+                                        fail:
+                                          - type: text
+                                            text: "{{target.name}} has been pushed 10ft. away!"
+                                            title: Effect
+                                        success: []
+                                        dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+                                verb: pushes with
+                                activation_type: 4
+                              defaultDC: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+                          buttons: []
+                          end: false
+                          conc: false
+                          stacking: false
+                          target_self: false
+                          tick_on_caster: false
+                  onFalse:
+                    - type: target
+                      target: all
+                      effects:
+                        - type: ieffect2
+                          name: "Stance: Adamantine Bull"
+                          attacks:
+                            - attack:
+                                _v: 2
+                                name: "Adamantine Bull: Shove"
+                                automation:
+                                  - type: target
+                                    target: all
+                                    effects:
+                                      - type: save
+                                        stat: str
+                                        fail:
+                                          - type: text
+                                            text: "{{target.name}} has been pushed 5ft. away!"
+                                            title: Effect
+                                        success: []
+                                        dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+                                verb: pushes with
+                                activation_type: 4
+                              defaultDC: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+                          buttons: []
+                          end: false
+                          conc: false
+                          stacking: false
+                          target_self: false
+                          tick_on_caster: false
+                  errorBehaviour: "false"
+                - type: text
+                  text: >-
+                    You crouch low to the ground, holding your weapon close to your body,
+                    prepared to charge. While in this stance, whenever a
+                    creature of your size or smaller hits you with a melee
+                    weapon attack, you can use your reaction to push it away.
+                    The creature that attacked you must succeed on a Strength
+                    saving throw or be pushed 5 feet away from you.
+
+
+                    At 18th level, the creature is pushed up to 10 feet instead.
+                  title: Effect
+              verb: assumes the
+              activation_type: 4
+          - attack:
+              _v: 2
+              name: "Stance: Iron Punisher"
+              automation:
+                - type: condition
+                  condition: level > 18 or level == 18
+                  onTrue:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: ieffect2
+                          name: "Stance: Iron Punisher"
+                          effects:
+                            attack_advantage: "1"
+                          attacks:
+                            - attack:
+                                _v: 2
+                                name: "Iron Punisher: Hit"
+                                automation:
+                                  - type: target
+                                    target: all
+                                    effects:
+                                      - type: damage
+                                        damage: 2d6[weapon]
+                                        overheal: false
+                                      - type: text
+                                        text: At 18th level, your melee weapon attacks deal an additional 2d6 damage.
+                                        title: Effect
+                          buttons: []
+                          end: false
+                          conc: false
+                          desc: >-
+                            {{caster.name}} has advantage on attack rolls, but attacks against them
+                            are with advantage as well.
+
+                            They also deal additonal 2d6 damage while in this stance.
+                          stacking: false
+                          target_self: false
+                          tick_on_caster: false
+                  onFalse:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: ieffect2
+                          name: "Stance: Iron Punisher"
+                          effects:
+                            attack_advantage: "1"
+                          attacks: []
+                          buttons: []
+                          end: false
+                          conc: false
+                          desc: "{{caster.name}} has advantage on attack rolls, but attacks against them
+                            are with advantage as well."
+                          stacking: false
+                          target_self: false
+                          tick_on_caster: false
+                  errorBehaviour: "false"
+                - type: text
+                  text: >-
+                    You hold your weapon overhead, preparing to bring your blade down like an
+                    executioner’s axe, but leaving you open to attacks. While in
+                    this stance, your melee weapon attacks have advantage, but
+                    all attacks against you also have advantage.
+
+
+                    Additionally, at 18th level, your melee weapon attacks deal an additional 2d6 damage while in this stance.
+                  title: Effect
+              verb: assumes the
+              activation_type: 8
+          - attack:
+              _v: 2
+              name: "Stance: Steel Serpent"
+              automation:
+                - type: condition
+                  condition: level > 18 or level == 18
+                  onTrue:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: ieffect2
+                          name: "Stance: Steel Serpent"
+                          attacks: []
+                          buttons: []
+                          end: false
+                          conc: false
+                          desc: "{{caster.name}}'s reach increases by 5 ft."
+                          stacking: false
+                          target_self: false
+                          tick_on_caster: false
+                  onFalse:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: ieffect2
+                          name: "Stance: Steel Serpent"
+                          attacks: []
+                          buttons: []
+                          end: false
+                          conc: false
+                          desc: "{{caster.name}}'s reach increases by 5 ft. only during their turn"
+                          stacking: false
+                          target_self: false
+                          tick_on_caster: false
+                  errorBehaviour: "false"
+                - type: text
+                  text: >-
+                    You shift your weight forward, poised to strike like a viper. While in
+                    this stance, your reach increases by 5 feet on your turn.
+
+
+                    At 18th level, your reach increases even when it’s not your turn.
+                  title: Effect
+              verb: assumes the
+              activation_type: 8
+          - attack:
+              _v: 2
+              name: "Stance: Weightless Mithral"
+              automation:
+                - type: condition
+                  condition: level > 18 or level == 18
+                  onTrue:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: ieffect2
+                          name: "Stance: Weightless Mithral"
+                          effects:
+                            save_adv:
+                              - dex
+                          attacks:
+                            - attack:
+                                _v: 2
+                                name: Dodge
+                                automation:
+                                  - type: target
+                                    target: self
+                                    effects:
+                                      - type: ieffect2
+                                        name: Dodging
+                                        duration: "2"
+                                        attacks: []
+                                        buttons: []
+                                        end: false
+                                        conc: false
+                                        desc: "{{caster.name}} dodges!"
+                                        stacking: false
+                                        target_self: false
+                                        tick_on_caster: true
+                                verb: evades with
+                                activation_type: 3
+                          buttons: []
+                          end: false
+                          conc: false
+                          desc: >-
+                            {{caster.name}} has advantage on Dexterity saving throws.
+
+                            {{caster.name}} can also take the Dodge action as a Bonus Action.
+                          stacking: false
+                          target_self: false
+                          tick_on_caster: false
+                  onFalse:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: ieffect2
+                          name: "Stance: Weightless Mithral"
+                          effects:
+                            save_adv:
+                              - dex
+                          attacks: []
+                          buttons: []
+                          end: false
+                          conc: false
+                          desc: "{{caster.name}} has advantage on Dexterity saving throws."
+                          stacking: false
+                          target_self: false
+                          tick_on_caster: false
+                  errorBehaviour: "false"
+                - type: text
+                  text: >-
+                    You shift your weight to the back of your feet and prepare to move at the
+                    slightest provocation. While in this stance, you have
+                    advantage on Dexterity saving throws.
+
+
+                    Additionally, at 18th level, you can take the Dodge action as a bonus action.
+                  title: Effect
+              verb: assumes the
+              activation_type: 8
+        buttons: []
+        end: false
+        conc: false
+        stacking: false
+        target_self: false
+        tick_on_caster: false
+      - type: text
+        text: >-
+          At 3rd level, your martial training allows you to develop a battle stance,
+          chosen from the list below. You gain an additional stance when you
+          reach 7th, 10th, and 15th level in this class.
+
+
+          When you roll initiative, you can choose to enter one stance that you know. You can also change between stances you know as a bonus action.
+
+
+          - Adamantine Bull
+
+          - Iron Punisher
+
+          - Steel Serpent
+
+          - Weightless Mithral
+        title: Effect
+verb: assumes
+activation_type: 8
