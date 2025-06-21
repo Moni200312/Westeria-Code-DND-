@@ -1,0 +1,25 @@
+name: Feral Fighting
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: attack
+        hit:
+          - type: damage
+            damage: 1d8[bludgeoning]
+        miss: []
+        attackBonus: "{{strengthMod+proficiencyBonus}}"
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "1"
+      - type: text
+        text: You can use a bonus action and spend 1 maneuver point to fight with
+          beastlike fury. When you do, make a single unarmed strike against a
+          creature. On a hit, you can roll 1d8 in place of the normal damage of
+          your unarmed strike.
+_v: 2
+proper: false
+verb: attacks using
+activation_type: 3
