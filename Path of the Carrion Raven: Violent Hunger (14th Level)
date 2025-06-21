@@ -1,0 +1,18 @@
+name: Violent Hunger
+automation:
+  - type: condition
+    condition: level > 14 or level == 14
+    onTrue:
+      - type: text
+        text: When you deal damage to a creature with a weapon attack and roll the
+          maximum result of one of the damage dice, you can spend 1 maneuver
+          point to roll another die of the same type and add its result to the
+          damage dealt by the attack. You can do this once per attack.
+    onFalse:
+      - type: text
+        text: You're not high enough level!
+    errorBehaviour: "false"
+_v: 2
+proper: true
+verb: succumbs to
+activation_type: 8
