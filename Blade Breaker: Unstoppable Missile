@@ -1,0 +1,37 @@
+name: Unstoppable Missile
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: dex
+        fail:
+          - type: text
+            text: >-
+              Takes damage equal to the weapon's damage dice plus {{(caster.strengthMod
+              or caster.dexterityMod)}}.
+
+
+              For each creature that takes damage from this maneuver, {{caster.name}} can spend 1 maneuver point and that creature takes an additional 2d6 damage of the weapon’s type.
+        success: []
+        dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+      - type: text
+        text: >-
+          As an action, you can spend 2 maneuver points and throw a melee weapon you
+          are wielding, affecting an area the size of a 5-foot-wide line that is
+          30 feet long. Each creature in the line must succeed on a Dexterity
+          saving throw or take damage equal to one roll of that weapon’s damage
+          dice plus your Strength or Dexterity modifier (your choice).
+
+
+          For each creature that takes damage from this maneuver, you can spend 1 maneuver point and that creature takes an additional 2d6 damage of the weapon’s type.
+        title: Unstoppable Missile (2 points)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "2"
+_v: 2
+proper: false
+verb: yeets
+activation_type: 1
