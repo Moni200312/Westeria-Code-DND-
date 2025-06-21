@@ -1,0 +1,41 @@
+name: Fearsome Presence
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: wis
+        fail:
+          - type: ieffect2
+            name: Frightened
+            duration: "10"
+            desc: >-
+              You can use your action to cause each hostile creature you can see within
+              a 30-foot radius to make a Wisdom saving throw against your spell
+              save DC. On a failure, the target becomes frightened of you for 1
+              minute, and it is restrained until the end of your next turn.
+
+
+              A frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+          - type: ieffect2
+            name: Restrained
+            duration: "1"
+            end: true
+            tick_on_caster: true
+        success: []
+        dc: ""
+  - type: text
+    text: >-
+      At 10th level, you learn how to channel the presence of a frightful beast,
+      even when not transformed. You can use your action to cause each hostile
+      creature you can see within a 30-foot radius to make a Wisdom saving throw
+      against your spell save DC. On a failure, the target becomes frightened of
+      you for 1 minute, and it is restrained until the end of your next turn. A
+      frightened creature can repeat the saving throw at the end of each of its
+      turns, ending the effect on itself on a success.
+
+
+      Once you use this feature, you can’t use it again until you finish a short or long rest.
+_v: 2
+proper: true
+verb: uses
