@@ -1,0 +1,14 @@
+- name: Eat Magical Food
+  automation:
+    - type: roll
+      dice: 2d4
+      name: Healing from Magical Food
+      hidden: null
+    - type: text
+      text: Choose to remove either the **frightened** or **poisoned** condition. Use
+        `!condition remove frightened` or `!condition remove poisoned` as
+        appropriate.
+      title: Effect
+  _v: 2
+  proper: true
+  verb: use
