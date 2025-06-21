@@ -1,0 +1,48 @@
+_v: 2
+name: "Spiritual Weapon: Unspool"
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 5 or caster.levels.get('Bard') == 5
+    onTrue:
+      - type: target
+        target: all
+        effects:
+          - type: save
+            stat: str
+            fail:
+              - type: ieffect2
+                name: Restrained
+                duration: "10"
+                buttons:
+                  - automation:
+                      - type: target
+                        target: self
+                        effects:
+                          - type: save
+                            stat: str
+                            fail: []
+                            success:
+                              - type: remove_ieffect
+                            dc: "{{8+proficiencyBonus+charismaMod}}"
+                    label: Free from Restraints
+                    style: "1"
+            success: []
+            dc: "{{8+proficiencyBonus+charismaMod}}"
+      - type: counter
+        counter:
+          id: 1011
+          typeId: 222216831
+        amount: "1"
+      - type: text
+        text: As an action, you can expend one use of your Bardic Inspiration to move
+          the weapon up to 20 feet and force one creature within 5 feet of the
+          weapon to make a Strength saving throw against your bard spell save
+          DC. On a failure, magical threads wrap around the creature, which is
+          restrained for 1 minute. The target can use its action to repeat the
+          saving throw, ending the effect on a success.
+    onFalse:
+      - type: text
+        text: Not high enough level.
+    errorBehaviour: "false"
+proper: false
+activation_type: 1
