@@ -1,0 +1,52 @@
+name: Disarming Swipe
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: attack
+        hit:
+          - type: condition
+            condition: target.strengthMod > target.dexterityMod
+            onTrue:
+              - type: save
+                stat: dex
+                fail:
+                  - type: ieffect2
+                    name: Dropped Armanents
+                    duration: "2"
+                    end: true
+                    desc: "{{target.name}} has dropped all of their weapons and shield that they
+                      were holding."
+                success: []
+                dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+            onFalse:
+              - type: save
+                stat: dex
+                fail:
+                  - type: ieffect2
+                    name: Dropped Armanents
+                    end: true
+                    duration: "2"
+                    desc: "{{target.name}} has dropped all of their weapons and shield that they
+                      were holding."
+                success: []
+                dc: "{{(strengthMod or dexterityMod) + proficiencyBonus + 8}}"
+            errorBehaviour: "false"
+        miss: []
+        attackBonus: "{{(strengthMod or dexterityMod) + proficiencyBonus}}"
+      - type: text
+        text: You can target your foe’s weapon instead of their body. When you hit with
+          a melee attack, you can spend 2 maneuver points and deal no damage
+          with that attack. Instead, the target must succeed on a Strength or
+          Dexterity saving throw (its choice) or be disarmed. A disarmed
+          creature drops any weapons or shields it is holding.
+        title: Disarming Swipe (2 points)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "2"
+_v: 2
+proper: false
+verb: swipes with
+activation_type: 1
