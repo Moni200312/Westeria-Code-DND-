@@ -1,0 +1,52 @@
+name: Trampling Bull
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Trampling Bull
+        end: true
+        duration: "1"
+        attacks:
+          - attack:
+              _v: 2
+              name: Bull Charge
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: save
+                      stat: str
+                      fail:
+                        - type: damage
+                          damage: (1d8 + {{strengthMod}}) [bludgeoning]
+                        - type: ieffect2
+                          name: Knocked Prone
+                          effects:
+                            attack_advantage: "-1"
+                          buttons:
+                            - label: Stand Up
+                              automation:
+                                - type: remove_ieffect
+                              style: "1"
+                      success: []
+                      dc: "{{8+constitutionMod+proficiencyBonus}}"
+              verb: "charges with "
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "3"
+      - type: text
+        text: >-
+          You can use a bonus action and spend 3 maneuver points to channel the
+          charging bull, moving up to your speed. While moving this way, you can
+          move through the space of creatures of your size or smaller, but you
+          must end your movement in an unoccupied space.
+
+
+          Each creature whose space you moved through must succeed on a Strength saving throw or be knocked prone and take bludgeoning damage equal to 1d8 + {{strengthMod}}.
+_v: 2
+proper: false
+verb: "charges like "
+activation_type: 3
