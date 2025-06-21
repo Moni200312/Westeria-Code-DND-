@@ -1,0 +1,31 @@
+name: Woolly Beast's Hide
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: roll
+        dice: 1d6
+        name: dam
+        displayName: Damage Reduction/Temp HP
+        hidden: true
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "2"
+      - type: text
+        text: When you are hit by an attack, you can use your reaction and spend 2 or
+          more maneuver points to use the resilient parts of your body to shield
+          your vulnerabilities from harmful damage. When you use this maneuver,
+          roll 1d6 for every 2 points you spend to use this maneuver and reduce
+          the damage from an attack by the result. After taking any remaining
+          damage, you also gain temporary hit points equal to the result of the
+          roll.
+      - type: damage
+        damage: -{{dam}}
+      - type: temphp
+        amount: "{{dam}}"
+_v: 2
+proper: false
+verb: shields themselves with
+activation_type: 4
