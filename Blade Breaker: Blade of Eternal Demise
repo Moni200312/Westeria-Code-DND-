@@ -1,0 +1,46 @@
+name: Blade of Eternal Demise
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Blade of Eternal Demise
+        duration: "4800"
+        attacks:
+          - attack:
+              _v: 2
+              name: Declares it for Demise
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: damage
+                      damage: "{{choice}}"
+                    - type: ieffect2
+                      name: Declared for Demise
+                      duration: "4800"
+                      effects:
+                        max_hp_bonus: -lastDamage
+                      stacking: true
+              verb: points at a creature and
+              activation_type: 2
+        desc: use -choice <dice> (no brackets) to add your weapon damage and lower enemy's max HP
+      - type: text
+        text: >-
+          As an action, you can spend 3 maneuver points and imbue your weapon with
+          magic and declare a single creature. For the next 8 hours, that weapon
+          is magical and if it deals damage to the declared creature, it also
+          reduces the target’s maximum hit points by same amount. This reduction
+          lasts until the target finishes a long rest.
+
+
+          If the declared creature dies from damage dealt by the imbued weapon, it cannot be returned to life by magic for as long as the weapon is touching the creature.
+        title: Blade of Eternal Demise (3 points)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "3"
+_v: 2
+proper: false
+activation_type: 1
