@@ -1,0 +1,42 @@
+name: Bloodied Clarity
+automation:
+  - type: condition
+    condition: level > 18 or level == 18
+    onTrue:
+      - type: condition
+        condition: caster.hp < (caster.max_hp/2)
+        onTrue:
+          - type: target
+            target: self
+            effects:
+              - type: ieffect2
+                name: Bloodied Clarity
+                desc: >-
+                  This effect lasts only as long as {{caster.name}} has below
+                  {{caster.max_hp/2}} HP.
+
+                  Additionally, all maneuvers cost 1 less maneuver point. (minimum of 1)
+          - type: text
+            text: >-
+              At 18th level, when you become wounded, your senses heighten and your
+              focus improves. While you have less than half your hit points, you
+              add a d10 to the first attack roll or saving throw you make each
+              turn. 
+
+              Use snippet `blocla`.
+
+
+              Additionally, while you have less than half your hit points, maneuvers you use cost 1 less maneuver point to use (minimum 1 point).
+        onFalse:
+          - type: text
+            text: |-
+              'Tis but a scratch.
+               -# you have more HP than you need for this feature
+        errorBehaviour: "false"
+    onFalse:
+      - type: text
+        text: You're not high enough level for this.
+_v: 2
+proper: false
+verb: empoweres themselves with
+activation_type: 8
