@@ -1,0 +1,243 @@
+name: Ritual Reskin
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: variable
+        name: abc
+        value: 8 + proficiencyBonus + charismaMod
+        onError: "0"
+      - type: condition
+        condition: caster.levels.get('Bard') > 15 or caster.levels.get('Bard') == 15
+        onTrue:
+          - type: roll
+            dice: d12
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 10 or
+              caster.levels.get('Bard') == 10
+            onTrue:
+              - type: roll
+                dice: d10
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 5 or
+                  caster.levels.get('Bard') == 5
+                onTrue:
+                  - type: roll
+                    dice: d8
+                    name: bardic
+                onFalse:
+                  - type: condition
+                    condition: caster.levels.get('Bard') < 5
+                    onTrue:
+                      - type: roll
+                        dice: d6
+                        name: bardic
+                    onFalse: []
+      - type: ieffect2
+        name: Ritual Reskinner
+        duration: "600"
+        attacks:
+          - attack:
+              _v: 2
+              name: Bull's Buns
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: ieffect2
+                      name: Reskinned with Bull's Buns
+                      duration: "600"
+                      effects:
+                        check_adv:
+                          - strength
+                      desc: "{{target.name}} has has advantage on Strength checks, and counts as one
+                        size larger when determining its carrying capacity and
+                        the weight it can push, drag, or lift."
+                - type: text
+                  text: The target has advantage on Strength checks, and counts as one size larger
+                    when determining its carrying capacity and the weight it can
+                    push, drag, or lift.
+                  title: Bull's Buns
+              verb: "fleshweaves "
+              activation_type: 8
+          - attack:
+              _v: 2
+              name: Cactus Skin
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: ieffect2
+                      name: Reskinned with Cactus Skin
+                      duration: "600"
+                      attacks:
+                        - attack:
+                            _v: 2
+                            name: Prickly Skin
+                            automation:
+                              - type: target
+                                target: all
+                                effects:
+                                  - type: save
+                                    stat: con
+                                    fail:
+                                      - type: text
+                                        text: The grappler takes piercing damage equal to roll of Bardic Inspiration
+                                          dice and {{caster.name}} has been
+                                          relesed from grapple!!
+                                    success:
+                                      - type: text
+                                        text: The grappler takes half of piercing damage equal to roll of Bardic
+                                          Inspiration dice and {{caster.name}}
+                                          has not been relesed from grapple!!
+                                    dc: ""
+                      desc: "{{target.name}} is covered in razor-sharp spikes. At the end of each of
+                        the target’s turns, each creature grappling it must make
+                        a Constitution saving throw against your bard spell save
+                        DC. On a failure, a creature takes piercing damage equal
+                        to your Bardic Inspiration die and releases the target
+                        from its grapple. On a success, a creature takes half as
+                        much damage and doesn’t have to release the target."
+                - type: text
+                  text: The target is covered in razor-sharp spikes. At the end of each of the
+                    target’s turns, each creature grappling it must make a
+                    Constitution saving throw against your bard spell save DC.
+                    On a failure, a creature takes piercing damage equal to your
+                    Bardic Inspiration die and releases the target from its
+                    grapple. On a success, a creature takes half as much damage
+                    and doesn’t have to release the target.
+                  title: Cactus Skin
+              verb: fleshweaves
+              activation_type: 8
+            defaultDC: abc or 10
+          - attack:
+              _v: 2
+              name: Cat's Paws
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: ieffect2
+                      name: Reskinned with Cat's Paws
+                      effects:
+                        check_adv:
+                          - dexterity
+                      desc: "{{target.name}} has advantage on Dexterity checks. It also doesn’t take
+                        damage from falling 20 feet or less if it isn’t
+                        incapacitated."
+                      duration: "600"
+                - type: text
+                  text: The target has advantage on Dexterity checks. It also doesn’t take damage
+                    from falling 20 feet or less if it isn’t incapacitated.
+                  title: Cat's Paws
+              verb: fleshweaves
+              activation_type: 8
+          - attack:
+              _v: 2
+              name: Fish Form
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: ieffect2
+                      name: Reskinned with Fish Form
+                      duration: "600"
+                      desc: "{{target.name}} can breathe underwater and gains a swimming speed equal
+                        to its walking speed."
+                - type: text
+                  text: The target can breathe underwater and gains a swimming speed equal to its
+                    walking speed.
+                  title: Fish Form
+              verb: fleshweaves
+              activation_type: 8
+          - attack:
+              _v: 2
+              name: Owl's Sight
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: ieffect2
+                      name: Reskinned with Owl's Sight
+                      desc: "{{target.name}} has advantage on Wisdom checks and initiative rolls."
+                      duration: "600"
+                      effects:
+                        check_adv:
+                          - initiative
+                          - wisdom
+                - type: text
+                  text: The target has advantage on Wisdom checks and initiative rolls.
+                  title: Owl's Sight
+              activation_type: 8
+          - attack:
+              _v: 2
+              name: Rhino's Hide
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: ieffect2
+                      name: Reskinned with Rhino's Skin
+                      duration: "600"
+                      effects:
+                        check_adv:
+                          - constitution
+                    - type: condition
+                      condition: caster.levels.get('Bard') > 15 or caster.levels.get('Bard') == 15
+                      onTrue:
+                        - type: temphp
+                          amount: d12 + {{constitutionMod}}
+                      onFalse:
+                        - type: condition
+                          condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 10 or
+                            caster.levels.get('Bard') == 10
+                          onTrue:
+                            - type: temphp
+                              amount: d10 + {{constitutionMod}}
+                          onFalse:
+                            - type: condition
+                              condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 5 or
+                                caster.levels.get('Bard') == 5
+                              onTrue:
+                                - type: temphp
+                                  amount: d8 + {{constitutionMod}}
+                              onFalse:
+                                - type: condition
+                                  condition: caster.levels.get('Bard') < 5
+                                  onTrue:
+                                    - type: temphp
+                                      amount: d6 + {{constitutionMod}}
+                                  onFalse: []
+              verb: fleshweaves
+              activation_type: 8
+      - type: text
+        text: >-
+          **Bull’s Buns.** The target has advantage on Strength checks, and counts
+          as one size larger when determining its carrying capacity and the
+          weight it can push, drag, or lift.
+
+          **Cactus Skin.** The target is covered in razor-sharp spikes. At the end of each of the target’s turns, each creature grappling it must make a Constitution saving throw against your bard spell save DC. On a failure, a creature takes piercing damage equal to your Bardic Inspiration die and releases the target from its grapple. On a success, a creature takes half as much damage and doesn’t have to release the target.
+
+          **Cat’s Paws.** The target has advantage on Dexterity checks. It also doesn’t take damage from falling 20 feet or less if it isn’t incapacitated.
+
+          **Fish Form.** The target can breathe underwater and gains a swimming speed equal to its walking speed.
+
+          **Owl’s Sight.** The target has advantage on Wisdom checks and initiative rolls.
+
+          **Rhino’s Hide.** The target has advantage on Constitution checks and gains temporary hit points equal to one roll of your Bardic Inspiration die plus your Charisma modifier (minimum 1), which are lost when the effect ends.
+
+
+          After you use this feature, you can’t do so again until you finish a long rest, unless you expend a spell slot of 3rd level or higher to use this feature again.
+      - type: counter
+        counter:
+          id: 10391904
+          typeId: 222216831
+        amount: "1"
+_v: 2
+proper: false
+verb: begins to paint
+activation_type: 8
