@@ -1,0 +1,24 @@
+name: Call of the Beast Lord
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Summoned Beast
+        duration: "100"
+        conc: true
+        desc: >-
+          {{caster.name}} summoned a beast with CR of {{caster.level}} or lower.
+
+          - A beast conjured in this way disappears when it is reduced to 0 hit points, after 10 minutes, or when you lose concentration on this maneuver.
+
+          - The creature shares your initiative but takes its turn immediately after yours.
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "5"
+_v: 2
+proper: false
+verb: uses
+activation_type: 1
