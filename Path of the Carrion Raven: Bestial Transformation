@@ -1,0 +1,27 @@
+_v: 2
+name: Bestial Transformation
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "8"
+      - type: text
+        text: You can use an action and spend 8 maneuver points to cast polymorph
+          targeting only yourself without providing material components.
+          However, you can only transform into a beast with a CR of half your
+          level or lower, and you retain your Intelligence, Wisdom, and Charisma
+          scores. Constitution is your spellcasting ability when you cast the
+          spell in this way.
+  - type: spell
+    id: 2209
+    level: null
+    dc: "{{8+proficiencyBonus+constitutionMod}}"
+    castingMod: "{{constitutionMod}}"
+    attackBonus: "{{constitutionMod+proficiencyBonus}}"
+proper: false
+activation_type: 1
+verb: "uses "
