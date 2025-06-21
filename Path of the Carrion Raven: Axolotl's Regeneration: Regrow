@@ -1,0 +1,24 @@
+name: "Axolotl's Regeneration: Regrow"
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: text
+        text: "{{caster.name}} regrows a limb or organ of their choice."
+        title: Effect
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "6"
+        allowOverflow: false
+        errorBehaviour: warn
+      - type: text
+        text: You can use a bonus action and spend 2 or 6 maneuver points to regenerate
+          your body. When you do, you regain 1d12 + your Constitution modifier
+          hit points. If you spent 6 points, you also regrow a lost limb or
+          organ of your choice.
+        title: Effect
+_v: 2
+verb: regains a missing body part with
+activation_type: 3
