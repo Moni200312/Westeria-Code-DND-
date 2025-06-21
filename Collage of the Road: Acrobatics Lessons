@@ -1,0 +1,54 @@
+name: Acrobatics Lessons
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 15 or caster.levels.get('Bard') == 15
+    onTrue:
+      - type: roll
+        dice: d12
+        name: bardic
+    onFalse:
+      - type: condition
+        condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 10 or
+          caster.levels.get('Bard') == 10
+        onTrue:
+          - type: roll
+            dice: d10
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 5 or
+              caster.levels.get('Bard') == 5
+            onTrue:
+              - type: roll
+                dice: d8
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 5
+                onTrue:
+                  - type: roll
+                    dice: d6
+                    name: bardic
+                onFalse: []
+  - type: target
+    target: all
+    effects:
+      - type: text
+        text: >-
+          {{target.name}} has +{{bardic}} bonus to their Dexterity Saving Throw.
+
+
+          At 6th level, if the target succeeds the saving throw against an effect that would deal half damage on a successful save, the target takes no damage instead.
+
+
+          At 14th level, even if the target fails their saving throw they only take half damage from the effect.
+        title: Acrobatics Lessons
+      - type: counter
+        counter:
+          id: 1011
+          typeId: 222216831
+        amount: "1"
+_v: 2
+proper: true
+verb: uses their
+activation_type: 2
