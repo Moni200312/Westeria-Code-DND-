@@ -1,0 +1,24 @@
+name: Wall of Blades
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: attack
+        hit: []
+        miss: []
+        attackBonus: "{{(strengthMod or dexterityMod) + proficiencyBonus}}"
+      - type: text
+        text: When you are hit with a weapon attack, you can use your reaction and spend
+          2 maneuver points to make a weapon attack against the creature
+          attacking you. You can replace your AC with the result of this attack
+          roll until the beginning of your next turn, including against the
+          triggering attack, potentially causing it to miss.
+        title: Wall of Blades (2 points)
+      - type: counter
+        counter:
+          id: 9112622
+          typeId: 222216831
+        amount: "2"
+_v: 2
+proper: false
+activation_type: 4
