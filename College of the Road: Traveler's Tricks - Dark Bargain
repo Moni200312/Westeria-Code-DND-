@@ -1,0 +1,145 @@
+name: Dark Bargain
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 14
+    onTrue:
+      - type: roll
+        dice: d12
+        name: bardic
+        hidden: false
+    onFalse:
+      - type: condition
+        condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+        onTrue:
+          - type: roll
+            dice: d10
+            name: bardic
+            hidden: false
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+            onTrue:
+              - type: roll
+                dice: d8
+                name: bardic
+                hidden: false
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 5
+                onTrue:
+                  - type: roll
+                    dice: d6
+                    name: bardic
+                    hidden: false
+                onFalse: []
+                errorBehaviour: "false"
+            errorBehaviour: "false"
+        errorBehaviour: "false"
+    errorBehaviour: "false"
+  - type: target
+    target: self
+    effects:
+      - type: damage
+        damage: "{{bardic}} [necrotic]"
+        overheal: false
+      - type: ieffect2
+        name: Dark Bargain
+        duration: "100"
+        effects: null
+        attacks:
+          - attack:
+              name: Extend the Bargain
+              automation:
+                - type: condition
+                  condition: caster.levels.get('Bard') > 14
+                  onTrue:
+                    - type: roll
+                      dice: d12
+                      name: bardic
+                  onFalse:
+                    - type: condition
+                      condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+                      onTrue:
+                        - type: roll
+                          dice: d10
+                          name: bardic
+                      onFalse:
+                        - type: condition
+                          condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+                          onTrue:
+                            - type: roll
+                              dice: d8
+                              name: bardic
+                          onFalse:
+                            - type: condition
+                              condition: caster.levels.get('Bard') < 5
+                              onTrue:
+                                - type: roll
+                                  dice: d6
+                                  name: bardic
+                              onFalse: []
+                - type: condition
+                  condition: caster.levels.get('Bard') > 5
+                  onTrue:
+                    - type: target
+                      target: self
+                      effects:
+                        - type: damage
+                          damage: "{{bardic*2}} [necrotic]"
+                          overheal: false
+                        - type: ieffect2
+                          name: Improved Dark Bargain
+                          duration: "600"
+                          effects: null
+                          attacks: []
+                          buttons: []
+                          end: false
+                          conc: false
+                          desc: "{{caster.name}} gained their desired Eldritch Invocation for 1 hour."
+                          stacking: false
+                          save_as: null
+                          parent: null
+                          target_self: false
+                          tick_on_caster: false
+                  onFalse: []
+                  errorBehaviour: "false"
+                - type: text
+                  text: At 6th level, you have learned how to deepen your pact with the warlock
+                    you once met. You may choose to take double the necrotic
+                    damage you rolled on your Bardic Inspiration die to instead
+                    have the effect last for 1 hour.
+              _v: 2
+              verb: gains power to
+              activation_type: 8
+            defaultDC: null
+            defaultAttackBonus: null
+            defaultCastingMod: null
+        buttons: []
+        end: false
+        conc: false
+        desc: "{{caster.name}} has gained their chosed Eldritch Invocation for the 10
+          minutes."
+        stacking: false
+        save_as: bargain
+        parent: null
+        target_self: true
+        tick_on_caster: false
+  - type: text
+    text: >-
+      When you select this option, choose an Eldritch Invocation from the
+      Warlock’s list of class features for which you meet the prerequisites. You
+      can expend one use of your Bardic Inspiration to gain the benefits of this
+      Dark Invocation for 10 minutes. Doing this requires you to roll your
+      Bardic Inspiration die and take an amount of necrotic damage equal to the
+      roll.
+
+
+      At 14th level, your pact with the warlock unlocks frightening new power. When you reach 14th level, choose a single spell of 7th level or lower from the warlock’s spell list. You may cast the spell once during this effect without expending any spell slots, although you must cast it at the level of your highest spell slot. In exchange, the spell deals additional necrotic damage to you equal to twice the level at which it was cast.
+  - type: counter
+    counter:
+      id: 1011
+      typeId: 222216831
+    amount: "1"
+_v: 2
+verb: empowers themselves temporarily with
+activation_type: 3
