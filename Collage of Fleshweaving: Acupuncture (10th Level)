@@ -1,0 +1,68 @@
+name: "Spiritual Weapon: Acupuncture"
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 15 or caster.levels.get('Bard') == 15
+    onTrue:
+      - type: roll
+        dice: d12
+        name: bardic
+    onFalse:
+      - type: condition
+        condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 10 or
+          caster.levels.get('Bard') == 10
+        onTrue:
+          - type: roll
+            dice: d10
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 5 or
+              caster.levels.get('Bard') == 5
+            onTrue:
+              - type: roll
+                dice: d8
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 5
+                onTrue:
+                  - type: roll
+                    dice: d6
+                    name: bardic
+                onFalse:
+                  - type: text
+                    text: You ain't a bard.
+  - type: target
+    target: all
+    effects:
+      - type: attack
+        hit:
+          - type: damage
+            damage: ({{bardic + charismaMod}}) [magical piercing]
+          - type: save
+            stat: con
+            fail:
+              - type: ieffect2
+                name: Paralyzed
+                duration: "2"
+                end: true
+            success: []
+            dc: "{{8+proficiencyBonus+charismaMod}}"
+        miss: []
+        attackBonus: charismaMod+proficiencyBonus
+      - type: text
+        text: As an action, you can expend one use of your Bardic Inspiration to move
+          the weapon up to 20 feet and make a melee spell attack against one
+          creature within 5 feet of it. On a hit, the creature takes piercing
+          damage equal to one roll of your Bardic Inspiration die plus your
+          Charisma modifier, and must make a Constitution saving throw against
+          your bard spell save DC. On a failure, the creature is paralyzed until
+          the end of its next turn.
+      - type: counter
+        counter:
+          id: 1011
+          typeId: 222216831
+        amount: "1"
+_v: 2
+proper: false
+activation_type: 1
