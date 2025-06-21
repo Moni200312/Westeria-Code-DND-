@@ -1,0 +1,56 @@
+name: Bind the Wound
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 14
+    onTrue:
+      - type: roll
+        dice: d12
+        name: bardic
+    onFalse:
+      - type: condition
+        condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 9
+        onTrue:
+          - type: roll
+            dice: d10
+            name: bardic
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 4
+            onTrue:
+              - type: roll
+                dice: d8
+                name: bardic
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 5
+                onTrue:
+                  - type: roll
+                    dice: d6
+                    name: bardic
+                onFalse: []
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: -{{(bardic-wisdomMod)}} [additional healing]
+      - type: text
+        text: >-
+          you may use your reaction to expend one use of your Bardic Inspiration and
+          provide extra healing equal to the number on the Bardic Inspiration
+          die roll + your Wisdom modifier. You must have at least one hand free
+          in order to quickly staunch the target’s wound.
+
+
+          At 6th level, you have learned to identify a selection of useful herbs that you can carry with you. When providing additional healing with this trick you may also remove the poisoned or paralyzed condition from the target.
+
+
+          At 14th level, you have developed a true knack for emergency triage. You may additionally remove a single disease affecting the target of this ability.
+      - type: counter
+        counter:
+          id: 1011
+          typeId: 222216831
+        amount: "1"
+_v: 2
+proper: true
+verb: uses their
+activation_type: 4
