@@ -1,0 +1,22 @@
+name: Thrill of the Hunt (Heal)
+automation:
+  - type: roll
+    dice: "0"
+    name: damage
+    hidden: false
+  - type: target
+    target: self
+    effects:
+      - type: damage
+        damage: -({damage}/2)
+  - type: text
+    text: >+
+      You regain a number of hit points equal to half the total damage dealt
+      with this attack.
+
+
+      Once you use this feature, you can’t use it again until you score a critical hit with a bite or claw attack or until you finish a short or long rest.
+
+_v: 2
+proper: true
+verb: invigorations with the
