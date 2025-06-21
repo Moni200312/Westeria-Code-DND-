@@ -1,0 +1,39 @@
+name: Snout of the Bloodhound
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Snout of the Bloodhound
+        duration: "600"
+        effects:
+          check_adv:
+            - perception
+            - survival
+        desc: >-
+          You have advantage on Perception and Survival checks to track
+
+          - You gain {{proficiencyBonus}} bonus to your initiative checks.
+
+          - You do not have disadvantage on attack rolls against invisible creatures.
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "1"
+      - type: text
+        text: >-
+          You take a minute and spend a maneuver point to attune your senses to your
+          surroundings, enhancing your senses of smell, sight, and hearing for
+          the next hour. During this time, you gain the following benefits:
+
+
+          - You have advantage on Wisdom (Perception) and Wisdom (Survival) checks to track
+
+          - You add your proficiency bonus to initiative checks
+
+          - You do not have disadvantage on attack rolls against invisible creatures
+_v: 2
+proper: false
+verb: grows
+activation_type: 8
