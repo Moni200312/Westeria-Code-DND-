@@ -1,0 +1,60 @@
+name: "Spiritual Weapon: Suture"
+automation:
+  - type: condition
+    condition: caster.levels.get('Bard') > 15 or caster.levels.get('Bard') == 15
+    onTrue:
+      - type: roll
+        dice: d12
+        name: bardic
+        hidden: false
+    onFalse:
+      - type: condition
+        condition: caster.levels.get('Bard') < 15 and caster.levels.get('Bard') > 10 or caster.levels.get('Bard') == 10
+        onTrue:
+          - type: roll
+            dice: d10
+            name: bardic
+            hidden: false
+        onFalse:
+          - type: condition
+            condition: caster.levels.get('Bard') < 10 and caster.levels.get('Bard') > 5 or caster.levels.get('Bard') == 5
+            onTrue:
+              - type: roll
+                dice: d8
+                name: bardic
+                hidden: false
+            onFalse:
+              - type: condition
+                condition: caster.levels.get('Bard') < 5
+                onTrue:
+                  - type: roll
+                    dice: d6
+                    name: bardic
+                onFalse:
+                  - type: text
+                    text: you aint a bard
+        errorBehaviour: "false"
+    errorBehaviour: "false"
+  - type: variable
+    name: abc
+    value: "{{bardic}}"
+  - type: target
+    target: all
+    effects:
+      - type: temphp
+        amount: "{{abc}}"
+      - type: text
+        text: As a bonus action or an action, you can expend one use of your Bardic
+          Inspiration to move the weapon up to 20 feet and grant temporary hit
+          points equal to one roll of your Bardic Inspiration die to one
+          creature within 5 feet of the weapon. If the creature has 0 hit
+          points, you can stabilise it, instead.
+      - type: counter
+        counter:
+          id: 1011
+          typeId: 222216831
+        amount: "1"
+_v: 2
+proper: false
+verb: saves with
+activation_type: 3
