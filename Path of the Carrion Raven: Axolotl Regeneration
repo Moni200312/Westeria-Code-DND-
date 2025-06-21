@@ -1,0 +1,24 @@
+name: "Axolotl's Regeneration: Heal"
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: damage
+        damage: -(1d12 + {{constitutionMod}}) [healing]
+        overheal: false
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "2"
+        allowOverflow: false
+        errorBehaviour: warn
+      - type: text
+        text: ""
+        title: You can use a bonus action and spend 2 or 6 maneuver points to regenerate
+          your body. When you do, you regain 1d12 + your Constitution modifier
+          hit points. If you spent 6 points, you also regrow a lost limb or
+          organ of your choice.
+_v: 2
+verb: regains vitality with
+activation_type: 3
