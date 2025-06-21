@@ -1,0 +1,36 @@
+name: Apex Dominance
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: str
+        fail:
+          - type: damage
+            damage: 6d10[force]
+            overheal: false
+        success:
+          - type: damage
+            damage: (6d10)/2[force]
+            overheal: false
+        dc: "{{8 + proficiencyBonus + constitutionMod}}"
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "5"
+        allowOverflow: false
+        errorBehaviour: warn
+      - type: text
+        text: >-
+          You can use an action and spend 5 maneuver points to attempt to sunder
+          your enemy with excessive force. When you do, a creature within your
+          reach must succeed on a Strength saving throw. If the creature is
+          currently grappled by you, it has disadvantage on this saving throw.
+
+
+          On a failed saving throw, the creature takes 6d10 force damage. On a successful save, the target takes half as much damage. If damage from this maneuver reduces a creature to 0 hit points, it immediately dies as you rip it apart.
+        title: Effect
+_v: 2
+verb: asserts dominance with
+activation_type: 1
