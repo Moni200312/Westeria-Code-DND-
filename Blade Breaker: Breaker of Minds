@@ -1,0 +1,68 @@
+name: Breaker of Minds
+automation:
+  - type: condition
+    condition: level > 10 or level == 10
+    onTrue:
+      - type: target
+        target: self
+        effects:
+          - type: ieffect2
+            name: Breaker of Minds
+            attacks:
+              - attack:
+                  _v: 2
+                  name: Breaker of Minds (1 point)
+                  automation:
+                    - type: target
+                      target: all
+                      effects:
+                        - type: damage
+                          damage: 1d6 [psychic]
+                    - type: counter
+                      counter:
+                        id: 9112622
+                        typeId: 222216831
+                      amount: "1"
+              - attack:
+                  _v: 2
+                  name: Breaker of Minds (2 points)
+                  automation:
+                    - type: target
+                      target: all
+                      effects:
+                        - type: damage
+                          damage: 2d6 [psychic]
+                    - type: counter
+                      counter:
+                        id: 9112622
+                        typeId: 222216831
+                      amount: "2"
+              - attack:
+                  _v: 2
+                  name: Breaker of Minds (3 points)
+                  automation:
+                    - type: target
+                      target: all
+                      effects:
+                        - type: damage
+                          damage: 3d6[psychic]
+                    - type: counter
+                      counter:
+                        id: 9112622
+                        typeId: 222216831
+                      amount: "3"
+            duration: "1"
+            end: true
+      - type: text
+        text: At 10th level, your prowess at shattering blades and armor extends to
+          harming the will of your foes. If you are grappling a creature, you
+          can spend a bonus action and up to 3 maneuver points. When you do, the
+          grappled creature takes 1d6 psychic damage for each maneuver point you
+          spent.
+    onFalse:
+      - type: text
+        text: You're not high enough level to use this!
+    errorBehaviour: "false"
+_v: 2
+proper: false
+activation_type: 3
