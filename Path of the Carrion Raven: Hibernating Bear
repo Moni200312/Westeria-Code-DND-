@@ -1,0 +1,48 @@
+name: Hibernating Bear Recuperation
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Bear Hibernation
+        duration: "100"
+        effects:
+          resistances:
+            - bludgeoning
+            - piercing
+            - slashing
+            - acid
+            - cold
+            - fire
+            - force
+            - lightning
+            - necrotic
+            - poison
+            - radiant
+            - thunder
+        buttons:
+          - label: Wake Up
+            automation:
+              - type: remove_ieffect
+            style: "1"
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "5"
+      - type: text
+        text: >-
+          You can spend an action and 5 maneuver points to put yourself into a deep
+          and restful sleep for the next 10 minutes. During this time you have
+          resistance to all damage except psychic and, when you take damage, you
+          can choose to remain asleep or wake up. If you sleep for the entire 10
+          minutes, you gain the benefits of having completed a short rest,
+          immediately end any poison affecting you, and lose one level of
+          exhaustion.
+
+
+          At the end of this sleep, you can spend and roll any number of Hit Die, adding your Constitution modifier to each Hit Die rolled, gaining temporary hit points equal to the total.
+_v: 2
+proper: false
+verb: falls asleep into
+activation_type: 1
