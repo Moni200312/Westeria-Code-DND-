@@ -1,0 +1,46 @@
+name: Falcon's Glide
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Falcon's Glide
+        duration: "10"
+        desc: "{{caster.name}}'s slows their falling speed to 60 feet per round for one
+          minute."
+        attacks:
+          - attack:
+              _v: 2
+              name: "Falcon's Glide: Fly"
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: ieffect2
+                      name: "Falcon's Glide: Flying"
+                      desc: "{{caster.name}} has flying speed of 30 feet until end of their turn."
+                      duration: "1"
+                      end: true
+                    - type: counter
+                      counter:
+                        id: 9112582
+                        typeId: 222216831
+                      amount: "1"
+              activation_type: 3
+      - type: counter
+        counter:
+          id: 9112582
+          typeId: 222216831
+        amount: "1"
+      - type: text
+        text: >-
+          When you fall, you can use your reaction and spend 1 maneuver point to
+          slow your fall to 60 feet per round for 1 minute. If you land before
+          this time elapses, you take no falling damage.
+
+
+          In addition, as a bonus action on each of your turns for the duration of this maneuver, you can spend 1 additional maneuver point to gain a fly speed of 30 feet until the end of the turn.
+_v: 2
+proper: false
+verb: uses
+activation_type: 4
