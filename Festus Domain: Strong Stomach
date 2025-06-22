@@ -1,0 +1,15 @@
+name: Strong Stomach
+automation:
+  - type: text
+    text: Finally, if you’re drunk or poisoned, you can use an action to magically
+      suppress the effect for 1 minute. Once you use this feature, you can’t use
+      it again until you finish a long rest.
+    title: Strong Stomach
+  - type: counter
+    counter: Strong Stomach
+    amount: "1"
+    errorBehaviour: raise
+_v: 2
+proper: false
+verb: has
+activation_type: 1
