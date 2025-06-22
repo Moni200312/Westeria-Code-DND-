@@ -1,0 +1,38 @@
+name: Table-Turner
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: con
+        fail:
+          - type: damage
+            damage: 1d12[poison]
+          - type: ieffect2
+            name: Poisoned
+            effects:
+              check_dis:
+                - all
+              attack_advantage: "-1"
+            duration: "1"
+        success:
+          - type: damage
+            damage: 1d12[poison]/2
+        dc: 10+wisdomMod+proficiencyBonus
+  - type: text
+    text: When a creature within 5 ft. of you that you can see hits you with an
+      attack, you can use your reaction to cause the creature to make a Con
+      saving throw against your cleric spell save DC. On a failed save, the
+      creature takes 1d12 poison damage and is poisoned until the end of its
+      next turn. On a successful one, it takes half as much poison damage and
+      isn't poisoned. You can use this feature your Wisdom Mod times, per long
+      rest.
+    title: Table-Turner
+  - type: counter
+    counter: Table-Turner
+    amount: "1"
+    errorBehaviour: raise
+_v: 2
+proper: true
+verb: uses
+activation_type: 2
