@@ -1,0 +1,39 @@
+name: "Channel Divinity: Paragon of the People"
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: ieffect2
+        name: Community Watch
+        duration: "{wisdomMod}"
+        effects:
+          check_bonus: 2d6
+        desc: Once per round, a creature benefitting from this boon can roll a d6,
+          adding the result to a skill check, saving throw, or attack roll.
+        buttons:
+          - label: Remove - Community Watch
+            automation:
+              - type: remove_ieffect
+            style: "4"
+  - type: text
+    text: >-
+      Starting at 6th level, you can use your Channel Divinity to instill a
+      feeling of vigilant protection in you and your allies. You grant yourself
+      and a number of allies, up to your Wisdom modifier (minimum of 1), a boon
+      from your deity. Allies must be able to see you and be within 30 feet to
+      receive the boon. Once per round, a creature benefitting from this boon
+      can roll a d6, adding the result to a skill check, saving throw, or attack
+      roll. This effect lasts for a number of rounds equal to your Wisdom
+      modifier (minimum of 1 round). A creature can only benefit from this
+      effect if it can see at least one of its allies. 
+
+
+      At 17th level, your Community Watch grants an additional d6 to each affected ally. It also grants immunity to fear for the duration of the effect. Additionally, your Magnificent Feast produces twice as many foodstuffs, each of which can, when consumed, remove a single curse or disease affecting the target (including attunement to a cursed item)
+    title: "Channel Divinity: Community Watch"
+  - type: counter
+    counter: Channel Divinity
+    amount: "1"
+_v: 2
+proper: true
+verb: uses
+activation_type: 1
