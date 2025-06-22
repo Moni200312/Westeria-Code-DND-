@@ -1,0 +1,32 @@
+name: Invigorating Feast
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: temphp
+        amount: 2d6+10
+      - type: ieffect2
+        name: Invigorating Feast
+        effects:
+          immunities:
+            - Charmed
+            - Sleep
+        duration: "4800"
+  - type: counter
+    counter: Invigorating Feast
+    amount: "1"
+    errorBehaviour: raise
+  - type: text
+    text: You say a special prayer before eating a meal to enchant it and other food
+      of your choice within 30 ft. of you with unique protections. A creature
+      that eats this enchanted food over the next 10 minutes gains 2d6 + 10
+      temporary HP, is immune to being charmed, and can't be put to sleep by
+      magic. These benefits last for 8 hours and don't set in until these 10
+      minutes are over. You and up to six other willing creatures of your choice
+      gain these benefits by partaking in the meal. Once you use this feature,
+      you can't use it again until you finish a long rest.
+    title: Invigorating Feast
+_v: 2
+proper: false
+verb: makes
+activation_type: 2
