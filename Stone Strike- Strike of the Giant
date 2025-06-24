@@ -1,0 +1,29 @@
+# Stone Strike
+```
+name: Stone Strike
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: 1d6[force]
+      - type: save
+        stat: str
+        fail:
+          - type: text
+            text: "# Pushed 10 feet back!!"
+        success: []
+      - type: text
+        text: The target takes an extra 1d6 force damage. If the target is a creature,
+          it must succeed on a Strength saving throw or be pushed 10 feet from
+          you in a straight line.
+        title: Stone Strike
+      - type: counter
+        counter:
+          id: 1405427
+          typeId: 1088085227
+        amount: "1"
+_v: 2
+proper: false
+activation_type: 8
+```
