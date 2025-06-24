@@ -1,0 +1,33 @@
+# Hill Strike
+```name: Hill Strike
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: 1d6[weapon]
+      - type: save
+        stat: str
+        fail:
+          - type: ieffect2
+            name: Prone
+            buttons:
+              - label: Stand Up
+                automation:
+                  - type: remove_ieffect
+                style: "1"
+        success: []
+      - type: text
+        text: The target takes an extra 1d6 damage of the weapon's type. If the target
+          is a creature, it must succeed on a Strength saving throw or have the
+          prone condition.
+        title: Hill Strike
+      - type: counter
+        counter:
+          id: 1405426
+          typeId: 1088085227
+        amount: "1"
+_v: 2
+proper: false
+activation_type: 8
+```
