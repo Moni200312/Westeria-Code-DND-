@@ -1,0 +1,47 @@
+# Cloud Strike
+```name: Cloud Strike
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: 1d4 [thunder]
+        overheal: false
+      - type: save
+        stat: wis
+        fail:
+          - type: ieffect2
+            name: Reverse Invisible
+            duration: "1"
+            effects:
+              attack_advantage: "-1"
+            attacks: []
+            buttons: []
+            end: false
+            conc: false
+            desc: The creature cannot see its attacker due to them being invisible to them.
+              The invisibility ends at the next start of attacker's turn, or if
+              they attack or cast a spell.
+            stacking: false
+            save_as: null
+            parent: null
+            target_self: false
+            tick_on_caster: true
+        success: []
+        dc: ""
+      - type: counter
+        counter:
+          id: 1405423
+          typeId: 1088085227
+        amount: "1"
+        allowOverflow: false
+        errorBehaviour: warn
+      - type: text
+        text: The target takes an extra 1d4 thunder damage. If the target is a creature,
+          it must succeed on a Wisdom saving throw, or you become invisible to
+          it until the start of your next turn or until immediately after you
+          make an attack roll or cast a spell.
+        title: Cloud Strike
+_v: 2
+activation_type: 8
+```
