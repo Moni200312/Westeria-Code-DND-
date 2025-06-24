@@ -1,0 +1,19 @@
+# Fire Strike
+```name: Fire Strike
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: 1d10[fire]
+  - type: text
+    text: The target takes an extra 1d10 fire damage.
+    title: Flame Strike
+  - type: counter
+        counter:
+          id: 1405424
+          typeId: 1088085227
+        amount: "1"
+_v: 2
+proper: false
+activation_type: 8```
