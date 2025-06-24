@@ -1,0 +1,32 @@
+# Storm Strike
+```name: Storm Strike
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: 1d6[lightning]
+      - type: save
+        stat: con
+        fail:
+          - type: ieffect2
+            name: Storm Struck
+            duration: "1"
+            tick_on_caster: true
+            effects:
+              attack_advantage: "-1"
+        success: []
+      - type: text
+        text: The target takes an extra 1d6 lightning damage. If the target is a
+          creature, it must succeed on a Constitution saving throw, or it has
+          disadvantage on attack rolls until the start of your next turn.
+        title: Storm Strike
+      - type: counter
+        counter:
+          id: 1405428
+          typeId: 1088085227
+        amount: "1"
+_v: 2
+proper: false
+activation_type: 8
+```
