@@ -1,0 +1,59 @@
+# Mace of Distruption
+
+```_v: 2
+name: Mace of Disruption
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: attack
+        hit:
+          - type: condition
+            condition: target.creature_type and ('undead' in target.creature_type.lower())
+              or ('fiend' in target.creature_type.lower())
+            onTrue:
+              - type: damage
+                damage: (1d6 + {{strengthMod}}) [bludgeoning] + 2d6 [radiant]
+              - type: condition
+                condition: lastAttackDidHit and target.hp < 26
+                onTrue:
+                  - type: save
+                    stat: wis
+                    fail:
+                      - type: damage
+                        damage: 26 [pineapple_pizza]
+                        fixedValue: false
+                    success:
+                      - type: ieffect2
+                        name: Frightened
+                        duration: "2"
+                        end: true
+                        tick_on_caster: true
+                        effects:
+                          attack_advantage: "-1"
+                        desc: "{{target.name}} is frightened of {{caster.name}}!"
+                    dc: "15"
+                onFalse:
+                  - type: text
+                    text: Last attack missed or target has more than 25 HP!
+                errorBehaviour: "false"
+            onFalse:
+              - type: damage
+                damage: (1d6 + {{strengthMod}}) [bludgeoning]
+            errorBehaviour: "false"
+        miss: []
+        attackBonus: "{{strengthMod+proficiencyBonus}}"
+      - type: text
+        text: >-
+          When you hit a Fiend or an Undead with this magic weapon, that creature
+          takes an extra 2d6 Radiant damage. If the target has 25 Hit Points or
+          fewer after taking this damage, it must succeed on a DC 15 Wisdom
+          saving throw or be destroyed. On a successful save, the creature has
+          the Frightened condition until the end of your next turn.
+
+
+          **Light.** While you hold this weapon, it sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet.
+        title: Description
+thumb: https://images-ext-1.discordapp.net/external/-jRd5usN_yDoRemqBx1LaRWdu3mUBYRt-tXSC63p5P8/https/www.dndbeyond.com/avatars/thumbnails/19/182/315/315/636382352893974590.jpeg?format=webp```
+
+You will need to keep it equipped and attuned on DnDB, but please customise the name so that it uses this attack and not the one from there
