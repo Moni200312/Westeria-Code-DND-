@@ -1,0 +1,57 @@
+```!a import name: Celestial Revelation (Necrotic Shroud) (Perm)
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: dex
+        fail:
+          - type: ieffect2
+            name: Frightened
+            duration: "1"
+            effects:
+              attack_advantage: "-1"
+            desc: "When you reach 3rd level, choose one of the revelation options below.
+              Thereafter, you can use a bonus action to unleash the celestial
+              energy within yourself, gaining the benefits of that revelation.
+              Your transformation lasts for 1 minute or until you end it as a
+              bonus action. Once you transform using your revelation below, you
+              can't use it again until you finish a long rest:"
+        success: []
+        dc: 8+proficiencyBonus+charismaMod
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Necrotic Shroud
+        duration: "10"
+        attacks:
+          - attack:
+              _v: 2
+              name: Necrotic Touch
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: damage
+                      damage: "{proficiencyBonus}"
+                    - type: text
+                      text: Until the transformation ends, once on each of your turns, you can deal
+                        extra necrotic damage to one target when you deal damage
+                        to it with an attack or a spell. The extra damage equals
+                        your proficiency bonus.
+              verb: uses
+              activation_type: 8
+  - type: text
+    text:
+      id: 173
+      typeId: 1960452172
+  - type: counter
+    counter: Celestial Revelation (Perm)
+    amount: "1"
+    fixedValue: true
+_v: 2
+proper: true
+verb: uses
+activation_type: 3
+```
