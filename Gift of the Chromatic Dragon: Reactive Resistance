@@ -1,0 +1,30 @@
+```!a import name: "Gift of the Chromatic Dragon: Reactive Resistance (Fixed)"
+automation:
+  - type: counter
+    counter: ""
+    amount: "0"
+    errorBehaviour: ignore
+  - type: variable
+    name: damage
+    value: lastCounterRequestedAmount
+    onError: "0"
+  - type: target
+    target: self
+    effects:
+      - type: damage
+        damage: -{damage/2}[heal]
+      - type: text
+        text: When you take acid, cold, fire, lightning, or poison damage, you can use
+          your reaction to give yourself resistance to that instance of damage.
+          You can use this reaction a number of times equal to your proficiency
+          bonus, and you regain all expended uses when you finish a long rest.
+  - type: counter
+    counter: "Gift of the Chromatic Dragon: Reactive Resistance"
+    amount: "1"
+    fixedValue: true
+    errorBehaviour: raise
+_v: 2
+proper: true
+verb: uses
+activation_type: 4
+```
