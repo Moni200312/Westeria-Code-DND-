@@ -1,0 +1,15 @@
+!snippet mirai -i <drac2>
+cc = "Memories of Mirai"
+ch = character()
+v  = ch.cc_exists(cc) and ch.get_cc(cc)
+
+if not ch.cc_exists(cc):
+  return f""" -f "{cc}|You do not have this Memory." """
+
+elif not v:
+  return f""" -f "{cc}|You must take a long rest to regain your expended uses." """
+
+else:
+  ch.mod_cc(cc, -1)
+  return f""" -f "{cc}|You start to feel her Memories!" """
+</drac2> -f "{{cc}}{{" (-1)" if v else ""}}|{{ch.cc_str(cc) if ch.cc_exists(cc) else "*None*"}}"
