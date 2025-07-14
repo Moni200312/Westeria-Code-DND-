@@ -1,0 +1,39 @@
+```!a import name: "Gift of the Metallic Dragon: Protective Wings (Fixed)"
+automation:
+  - type: counter
+    counter: ""
+    amount: "0"
+    errorBehaviour: ignore
+  - type: roll
+    dice: "{proficiencyBonus}"
+    name: AC Bonus
+    displayName: AC Bonus
+  - type: variable
+    name: damage
+    value: lastCounterRequestedAmount
+    onError: "0"
+  - type: target
+    target: all
+    effects:
+      - type: damage
+        damage: -{damage}[heal]
+      - type: text
+        text: You can manifest protective wings that can shield you or others. When you
+          or another creature you can see within 5 feet of you is hit by an
+          attack roll, you can use your reaction to manifest spectral wings from
+          your back for a moment. You grant a bonus to the target's AC equal to
+          your proficiency bonus against that attack roll, potentially causing
+          it to miss. You can use this reaction a number of times equal to your
+          proficiency bonus, and you regain all expended uses when you finish a
+          long rest.
+  - type: counter
+    counter: "Gift of the Metallic Dragon: Protective Wings"
+    amount: "1"
+    allowOverflow: false
+    errorBehaviour: raise
+    fixedValue: true
+_v: 2
+proper: true
+verb: uses
+activation_type: 4
+```
