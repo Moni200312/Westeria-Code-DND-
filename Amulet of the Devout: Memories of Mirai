@@ -1,0 +1,14 @@
+.!a import name: Memories of Mirai
+automation:
+  - type: text
+    text: “You were always there for me, even when the world denied my presence,
+      your sacrifice gave rise to the man i chose to be to honor you, my will is
+      yours sister, and together, we shall shape the world”
+  - type: counter
+    counter: Memories of Mirai
+    amount: "1"
+    errorBehaviour: raise
+_v: 2
+proper: true
+verb: uses their
+activation_type: 2
