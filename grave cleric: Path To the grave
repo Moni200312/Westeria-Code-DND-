@@ -1,0 +1,3 @@
+**PathGrave**: ```py
+!snippet PathGrave {{dtypes = ["acid","bludgeoning","cold","fire","force","lightning","necrotic","piercing","poison","radiant","slashing","thunder","psychic"]}}{{" ".join([f'-vuln1 {x}' for x in dtypes])}} -f "Channel Divinity: Path to the Grave|The next time you or an ally of yours hits the cursed creature with an attack, the creature has vulnerability to all of that attack's damage, and then the curse ends."
+```
