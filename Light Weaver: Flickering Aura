@@ -1,0 +1,102 @@
+name: Flickering Aura
+automation:
+  - type: counter
+    counter: Flickering Aura
+    amount: "0"
+    allowOverflow: false
+    errorBehaviour: warn
+  - type: target
+    target: self
+    effects:
+      - type: condition
+        condition: lastCounterRemaining == 1
+        onTrue:
+          - type: ieffect2
+            name: Light-shifted
+            duration: null
+            effects: null
+            attacks:
+              - attack:
+                  name: Extend/Reduce Aura
+                  automation:
+                    - type: text
+                      text: >-
+                        While light-shifted you can use an action to emit an aura of bright light
+                        in a 15-foot-radius sphere centered on yourself. While
+                        the aura persists, you can use a bonus action to expand
+                        or reduce its radius of bright light by 5 feet, to a
+                        maximum of 30 feet each or a minimum of 10 feet.
+
+
+                        `!map -under# circle,17,b,{targ} -t "{{caster.name}}"`
+
+
+                        (Note, change your number to radius+2, so if you extend to 20ft, it is 22. If you reduce to 10ft, it is 12. This is to take your token size into consideration.)
+                      title: light-shifted
+                  _v: 2
+                  activation_type: 3
+                defaultDC: null
+                defaultAttackBonus: null
+                defaultCastingMod: null
+            buttons: []
+            end: false
+            conc: false
+            desc: Non-magical bright light shed around {{caster.name}}.
+            stacking: false
+            save_as: null
+            parent: null
+            target_self: false
+            tick_on_caster: false
+        onFalse:
+          - type: ieffect2
+            name: Dark-shifted
+            duration: null
+            effects: null
+            attacks:
+              - attack:
+                  name: Extend/Reduce Aura
+                  automation:
+                    - type: text
+                      text: >-
+                        While dark-shifted you can use an action to emit an aura of darkness in a
+                        15-foot-radius sphere centered on yourself. While the
+                        aura persists, you can use a bonus action to expand or
+                        reduce its radius of darkness by 5 feet, to a maximum of
+                        30 feet each or a minimum of 10 feet.
+
+
+                        `!map -under# circle,17,b,{targ} -t "{{caster.name}}"`
+
+
+                        (Note, change your number to radius+2, so if you extend to 20ft, it is 22. If you reduce to 10ft, it is 12. This is to take your token size into consideration.)
+                      title: Effect
+                  _v: 2
+                  activation_type: 3
+                defaultDC: null
+                defaultAttackBonus: null
+                defaultCastingMod: null
+            buttons: []
+            end: false
+            conc: false
+            desc: Non-magical darkness shed around {{caster.name}}.
+            stacking: false
+            save_as: null
+            parent: null
+            target_self: false
+            tick_on_caster: false
+        errorBehaviour: "false"
+  - type: text
+    text: >-
+      Starting at 1st level, you can choose whether your magic is light-shifted
+      or dark-shifted. You can change your choice at the end of a long rest.
+
+
+      While light-shifted you can use an action to emit an aura of bright light in a 15-foot-radius sphere centered on yourself. While the aura persists, you can use a bonus action to expand or reduce its radius of bright light by 5 feet, to a maximum of 30 feet each or a minimum of 10 feet.
+
+
+      While dark-shifted you gain the same ability, but you project an aura of nonmagical darkness.
+
+
+      You may subtract or add 1 to the cc "Flickering Aura" every long rest in order to denote Light (1 cc) or Dark (0 cc)
+    title: Flickering Aura
+_v: 2
