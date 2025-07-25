@@ -1,0 +1,49 @@
+and 18
+```name: Spell Blind
+automation:
+  - type: variable
+    name: SorcererDCBonus
+    value: SorcererDCBonus
+    onError: "0"
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Spell Blind
+        duration: "10"
+        attacks:
+          - attack:
+              _v: 2
+              name: Empowered Aura
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: save
+                      stat: con
+                      fail:
+                        - type: ieffect2
+                          name: Blinded
+                          desc: >2-
+                              A blinded creature can't see and automatically fails any ability check that requires sight.
+                               Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.
+                      success: []
+                      dc: 8+proficiencyBonus+charismaMod+SorcererDCBonus
+        conc: true
+        desc: Each hostile creature that starts its turn within 60 feet of you must
+          succeed on a Constitution saving throw or be blinded until the aura
+          ends.
+  - type: counter
+    counter: Sorcery Points
+    amount: "5"
+  - type: text
+    text: Beginning at 18th level, your spell energy overwhelms your target's
+      perceptions. As an action, you can spend 5 sorcery points to empower your
+      Flickering Aura. For 1 minute or until you lose your concentration (as if
+      you were casting a concentration spell), each hostile creature that starts
+      its turn within 60 feet of you must succeed on a Constitution saving throw
+      or be blinded until the aura ends.
+    title: Spell Blind
+_v: 2
+proper: false
+```
