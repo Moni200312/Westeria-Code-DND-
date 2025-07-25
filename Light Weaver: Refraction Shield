@@ -1,0 +1,35 @@
+name: Refraction Shield
+automation:
+  - type: target
+    target: self
+    effects:
+      - type: ieffect2
+        name: Refraction Shield
+        duration: "100"
+        attacks:
+          - attack:
+              _v: 2
+              name: Searing Energy
+              automation:
+                - type: target
+                  target: all
+                  effects:
+                    - type: damage
+                      damage: 2d8
+  - type: text
+    text: At 6th level, you can manipulate the light around you for protection. As a
+      bonus action, you can spend 3 sorcery points to magically create a shield
+      of light. While the shield is in place, whenever a creature within 5 feet
+      of you hits you with a melee attack, the shield flashes with searing
+      energy, and the attacker takes 2d8 radiant damage if you are light-shifted
+      or 2d8 necrotic damage if you are dark-shifted. The shield disappears if
+      you fall unconscious or after 10 minutes.
+    title: Refraction Shield
+  - type: counter
+    counter: "Sorcery Points "
+    amount: "3"
+_v: 2
+proper: false
+activation_type: 3
+list_display_override: Once used, do `!a searing -dtype necrotic or radiant`
+```
