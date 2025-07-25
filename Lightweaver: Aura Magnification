@@ -1,0 +1,49 @@
+Level 14 aura magnification
+```_v: 2
+name: Aura Magnification
+automation:
+  - type: counter
+    counter: Flickering Aura
+    amount: "0"
+    allowOverflow: false
+    errorBehaviour: warn
+  - type: target
+    target: self
+    effects:
+      - type: condition
+        condition: lastCounterRemaining == 1
+        onTrue:
+          - type: ieffect2
+            name: Aura Magnification
+            buttons: []
+            end: false
+            conc: false
+            desc: "{{caster.name}}'s light is now magical. You can dispel magical darkness
+              that has been cast up to your highest spell slot level if your
+              aura overlaps it."
+            stacking: false
+            target_self: false
+            tick_on_caster: false
+        onFalse:
+          - type: ieffect2
+            name: Aura Magnification
+            buttons: []
+            end: false
+            conc: false
+            desc: "{{caster.name}}'s darkness is now magical. You can dispel magical light
+              that has been cast up to your highest spell slot level if your
+              aura overlaps it."
+            stacking: false
+            target_self: false
+            tick_on_caster: false
+        errorBehaviour: "false"
+  - type: text
+    text: >-
+      Starting at 14th level, your manipulation of the light around you becomes
+      masterful. While light-shifted, your Flickering Aura produces sunlight.
+      While dark-shifted, your aura produces magical darkness.
+
+
+      If any of this aura's area overlaps with an area of light or darkness created by a spell equal to or lower than the level of your highest available spell slot, the spell that created the light or darkness is dispelled.
+    title: Aura Magnification
+```
