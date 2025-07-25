@@ -1,0 +1,147 @@
+name: Shadow Bind
+automation:
+  - type: counter
+    counter: Shadow Bind
+    amount: "0"
+    allowOverflow: false
+    errorBehaviour: warn
+  - type: target
+    target: self
+    effects:
+      - type: condition
+        condition: lastCounterRemaining == 2
+        onTrue:
+          - type: ieffect2
+            name: Shadow Bind
+            duration: "14400"
+            effects: null
+            attacks: []
+            buttons:
+              - label: Teleport
+                automation:
+                  - type: text
+                    text: When you are in dim light or darkness, as part of your move, you can
+                      teleport up to half your speed to an unoccupied space you
+                      can see that is also in dim light or darkness. You then
+                      have advantage on the first Dexterity (Stealth) check you
+                      make before the end of your turn.
+                    title: Shadow Bind - Teleport
+                verb: null
+                style: "2"
+                defaultDC: null
+                defaultAttackBonus: null
+                defaultCastingMod: null
+            end: false
+            conc: false
+            desc: When you are in dim light or darkness, as part of your move, you can
+              teleport up to half your speed to an unoccupied space you can see
+              that is also in dim light or darkness. You then have advantage on
+              the first Dexterity (Stealth) check you make before the end of
+              your turn.
+            stacking: false
+            save_as: null
+            parent: null
+            target_self: false
+            tick_on_caster: false
+        onFalse:
+          - type: condition
+            condition: lastCounterRemaining == 1
+            onTrue:
+              - type: ieffect2
+                name: Shadow Bind
+                duration: "14400"
+                effects: null
+                attacks:
+                  - attack:
+                      name: Moved
+                      automation:
+                        - type: target
+                          target: self
+                          effects:
+                            - type: ieffect2
+                              name: Moved
+                              duration: "1"
+                              effects:
+                                ac_bonus: "2"
+                              attacks: []
+                              buttons: []
+                              end: false
+                              conc: false
+                              desc: |-
+                                +2 to dex saves
+                                +2 to ac
+                              stacking: false
+                              save_as: null
+                              parent: null
+                              target_self: false
+                              tick_on_caster: false
+                      _v: 2
+                      activation_type: 8
+                    defaultDC: null
+                    defaultAttackBonus: null
+                    defaultCastingMod: null
+                buttons: []
+                end: false
+                conc: false
+                desc: "When you are in dim light or darkness, if you move at least half your
+                  speed, you benefit from a perpetual half cover until the start
+                  of your next turn: +2 bonus to AC and Dexterity saving
+                  throws."
+                stacking: false
+                save_as: null
+                parent: null
+                target_self: false
+                tick_on_caster: false
+            onFalse:
+              - type: ieffect2
+                name: Shadow Bind
+                duration: "14400"
+                effects: null
+                attacks:
+                  - attack:
+                      name: Bind Cold
+                      automation:
+                        - type: target
+                          target: all
+                          effects:
+                            - type: damage
+                              damage: "{proficiencyBonus} [cold]"
+                              overheal: false
+                            - type: text
+                              text: Or use snippet `sbc`
+                              title: Effect
+                      _v: 2
+                    defaultDC: null
+                    defaultAttackBonus: null
+                    defaultCastingMod: null
+                buttons: []
+                end: false
+                conc: false
+                desc: null
+                stacking: false
+                save_as: null
+                parent: null
+                target_self: false
+                tick_on_caster: false
+            errorBehaviour: "false"
+        errorBehaviour: "false"
+  - type: text
+    text: >-
+      Starting at 3rd level, you can perform a special ritual to siphon the
+      power of shadow and bind it to yourself. You can conduct this ritual
+      during a long rest. Performing the ritual requires time spent meditating
+      in nonmagical darkness for at least 1 hour. At the end of the ritual, you
+      choose one of the following effects, which lasts for 24 hours or until you
+      perform the ritual again:
+
+          When you are in dim light or darkness, as part of your move, you can teleport up to half your speed to an unoccupied space you can see that is also in dim light or darkness. You then have advantage on the first Dexterity (Stealth) check you make before the end of your turn.
+          When you are in dim light or darkness, if you move at least half your speed, you benefit from a perpetual half cover until the start of your next turn: +2 bonus to AC and Dexterity saving throws.
+          When you hit with a melee or ranged weapon attack, you can cause the attack to deal additional cold damage equal to your proficiency bonus. You can use this feature only once on each of your turns.
+
+      2 = teleport
+
+      1 = half-cover
+
+      0 = cold damage
+    title: Shadow Bind
+_v: 2
