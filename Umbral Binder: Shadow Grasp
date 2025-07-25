@@ -1,0 +1,54 @@
+Umbral 17
+```name: Shadow Grasp
+automation:
+  - type: target
+    target: all
+    effects:
+      - type: save
+        stat: dex
+        fail:
+          - type: ieffect2
+            name: Restrained - (Shadow Grasp)
+            duration: "10"
+            desc: |-
+              Speed - 0
+              Attacks at dis, attacks against at advantage
+              Disadvantage on dex saves
+            buttons:
+              - label: Resist Shadow Grasp
+                automation:
+                  - type: target
+                    target: self
+                    effects:
+                      - type: save
+                        stat: dex
+                        fail:
+                          - type: text
+                            text: Failure
+                        success:
+                          - type: remove_ieffect
+                          - type: text
+                            text: You are no longer restrained.
+                        dc: lastSaveDC
+                style: "4"
+        success: []
+        dc: 8+proficiencyBonus+dexterityMod
+  - type: text
+    text: >-
+      At 17th level, you can wrap your foes in debilitating shadow. When you
+      deal Sneak Attack damage to a creature, you can force them to make a
+      Dexterity saving throw (DC 8 + your proficiency bonus + your Dexterity
+      modifier). If the save fails, the target is restrained for 1 minute. The
+      restrained target can repeat the saving throw at the end of each of its
+      turns, ending the effect on itself on a success.
+
+
+      Once you use this feature, you can't do so again until you finish a short or long rest.
+    title: Shadow Grasp
+  - type: counter
+    counter: Shadow Grasp
+    amount: "1"
+_v: 2
+proper: false
+```
+`!cc create "Shadow Grasp" -min 0 -max 1 -type hex -reset short`
