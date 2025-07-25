@@ -1,0 +1,48 @@
+Umbral binder 9
+`!snippet cloaked -f "At 9th level, shadows hide your every strike. You gain an additional way to use your Sneak Attack. You don't need advantage on the attack roll to use your Sneak Attack against a creature if you are within 30 feet, are in dim light or darkness, and you don't have disadvantage on the attack roll. All the other rules for Sneak Attack still apply to you."`
+
+Umbral 13
+```name: Black Magic - Darkness
+automation:
+  - type: spell
+    id: 2058
+  - type: counter
+    counter: Black Magic
+    amount: "1"
+  - type: text
+    text: >-
+      At 13th level, you can draw more power from the shadows bound to you. As a
+      bonus action, you can cast darkness without providing material components.
+      Once you use this feature three times, you cannot do so again until you
+      finish a long rest.
+
+
+      Additionally, when you are in an area of dim light or darkness, you can use your action to become invisible. You remain invisible until you make an attack, cast a spell, or are in an area of bright light.
+    title: Black Magic
+_v: 2
+proper: false
+```
+`!cc create "Black Magic" -min 0 -max 3 -type bubble -reset long`
+
+```name: Black Magic - Invisibility
+automation:
+  - type: text
+    text: Additionally, when you are in an area of dim light or darkness, you can
+      use your action to become invisible. You remain invisible until you make
+      an attack, cast a spell, or are in an area of bright light.
+    title: Black Magic
+  - type: target
+    target: all
+    effects:
+      - type: ieffect2
+        name: Invisible
+        effects:
+          check_adv:
+            - initiative
+        desc: |-
+          Surprise - Adv on Init Rolls
+          Concealed
+          Lasts while {{caster.name}} is in dim light or darkness
+_v: 2
+proper: false
+```
